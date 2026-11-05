@@ -1,11 +1,11 @@
+import MainTemplate from '../components/common/MainTemplate'
+import PricingPlans from '../components/home/PricingPlans'
 import '../scss/subscriptions.scss'
 
 export default function SubscriptionsPage() {
     return (
-        <>
-            <div className="subscriptions">
-                <h1>Subscriptions Page</h1>
-            </div>
-        </>
+        <MainTemplate id="subscriptions" page="subscriptions">
+            <PricingPlans id="plans" />
+        </MainTemplate>
     )
 }

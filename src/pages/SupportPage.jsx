@@ -1,11 +1,19 @@
-import '../scss/support.scss'
+import { useMediaQuery } from 'react-responsive';
+import MainTemplate from '../components/common/MainTemplate';
+import FAQs from '../components/home/FAQs';
+import '../scss/support.scss';
 
 export default function SupportPage() {
+    const isMobileScreen = useMediaQuery({ maxWidth: 767 });
+    const isTabletScreen = useMediaQuery({ maxWidth: 1023 });
+    // const isLaptopScreen = useMediaQuery({ maxWidth: 1439 });
+    let faqColumns = 2;
+    if (isMobileScreen || isTabletScreen) {
+        faqColumns = 1;
+    }
     return (
-        <>
-            <div className="support">
-                <h1>Support Page</h1>
-            </div>
-        </>
+        <MainTemplate id="support" page="support">
+            <FAQs columns={faqColumns} />
+        </MainTemplate>
     )
 }

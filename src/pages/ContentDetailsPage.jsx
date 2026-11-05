@@ -1,11 +1,18 @@
-
+import { useSearchParams } from "react-router-dom";
+import MainTemplate from "../components/common/MainTemplate";
+import Trailer from "../components/content-details/Trailer";
+import '../scss/content-detail.scss';
 
 export default function ContentDetailsPage() {
+    const [searchParams] = useSearchParams();
+    const contentId = searchParams.get("id");
     return (
-        <>
-            <div className="content-detail">
-                <h1>Content Details Page</h1>
-            </div>
-        </>
+        <MainTemplate id="content-detail" page="movies-and-shows">
+            <Trailer
+                id="thumbnail"
+                trailer={{id: contentId}}
+                carousel={false}
+            />
+        </MainTemplate>
     )
 }

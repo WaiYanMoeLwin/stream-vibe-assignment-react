@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../../api/api';
 
-export default function PricingPlans() {
+export default function PricingPlans({id}) {
     const [plans, setPlans] = useState([]);
     const [billingCycles, setBillingCycles] = useState();
     const [selectedBillingCycle, setSelectedBillingCycle] = useState('monthly');
@@ -15,7 +15,7 @@ export default function PricingPlans() {
     }, []);
 
     return (
-        <section id="pricing">
+        <section id={id}>
             <header className="section-header">
                 <article>
                     <h2 className="section-title">Choose the plan that's right for you</h2>

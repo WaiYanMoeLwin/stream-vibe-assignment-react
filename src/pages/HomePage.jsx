@@ -28,7 +28,7 @@ export default function HomePage() {
                 <Categories perPage={categoriesPerPage} />
                 <Devices />
                 <FAQs columns={faqColumns} />
-                <PricingPlans />
+                <PricingPlans id="pricing" />
             </MainTemplate>
         </>
     )
