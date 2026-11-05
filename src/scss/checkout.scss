@@ -1,0 +1,163 @@
+@use 'base';
+#checkout {
+.checkout-section {
+    display: flex;
+    flex-direction: column;
+    margin: 0 8rem 12rem;
+    padding: 4rem;
+    background-color: base.$black-10;
+    border-radius: 1rem;
+    border: 1px solid base.$black-15;
+    gap: 4rem;
+
+    .checkout-title {
+        font-size: 3.6rem;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .checkout-form {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 4rem 2rem;
+        padding: 0 8rem;
+        font-size: 2rem;
+        color: base.$white;
+        align-items: center;
+
+        > .label {
+            font-weight: 600;
+        }
+
+        .form-field {
+            @include base.flex-row;
+            justify-content: flex-start;
+            gap: 2rem;
+            input[type="radio"] {
+                display: none;
+
+                + label {
+                    cursor: pointer;
+                }
+
+                &:checked + label {
+                    padding: 1rem;
+                    background-color: base.$red-45;
+                    border: 1px solid base.$red-60;
+                    border-radius: 0.8rem;
+                }
+            }
+        }
+
+        .free-trial, .card-number, .expiration-date, .cvv, .subtotal {
+            grid-column: 1/-1;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            justify-items: start;
+            font-weight: 600;
+            input[type="text"] {
+                width: 100%;
+                padding: 1rem;
+                box-sizing: border-box;
+                border-radius: 0.8rem;
+                background-color: base.$black-06;
+                border: 1px solid base.$black-25;
+                color: base.$white;
+            }
+        }
+
+        input[type="checkbox"] {
+            appearance: none;
+            padding: 1.2rem;
+            margin: 0;
+            background-color: base.$black-06;
+            border: 1px solid base.$red-60;
+            border-radius: 0.4rem;
+            cursor: pointer;
+
+            &:checked {
+                background-color: base.$red-45;
+                border: 1px solid base.$red-60;
+            }
+        }
+
+        .submit-button {
+            @include base.primary-button;
+            grid-column: 1/-1;
+            justify-self: center;
+            padding: 1.5rem 4rem;
+        }
+    }
+}
+
+@media (max-width: 1439px) {
+    .checkout-section {
+        margin: 0 4rem 10rem;
+        padding: 2rem;
+        gap: 2rem;
+
+        .checkout-title {
+            font-size: 2.8rem;
+        }
+
+        .checkout-form {
+            padding: 0 4rem;
+            gap: 3rem 2rem;
+            font-size: 1.6rem;
+
+            .form-field {
+                input[type="radio"] {
+                    &:checked + label {
+                        padding: 0.8rem;
+                    }
+                }
+            }
+
+            input[type="checkbox"] {
+                padding: 0.6rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 1023px) {
+    .checkout-section {
+        margin: 0 2rem 8rem;
+        padding: 2rem 1rem;
+        gap: 1rem;
+
+        .checkout-title {
+            font-size: 2.4rem;
+        }
+
+        .checkout-form {
+            padding: 0 2rem;
+            gap: 2rem;
+            font-size: 1.4rem;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .checkout-section {
+        margin: 0 1.6rem 6rem;
+        padding: 1rem;
+
+        .checkout-title {
+            font-size: 2rem;
+        }
+
+        .checkout-form {
+            grid-template-columns: 1fr;
+            padding: 0 1rem;
+            gap: 1.6rem;
+            font-size: 1.2rem;
+
+            .form-field {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+}

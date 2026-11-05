@@ -1,0 +1,488 @@
+@use "base";
+#subscriptions {
+
+header.main-header {
+    margin-bottom: 10rem;
+}
+
+.active-plan {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 2rem;
+    margin: 0 8rem 6rem;
+    padding: 4rem;
+    background-color: base.$black-10;
+    border: 1px solid base.$black-15;
+    border-radius: 1rem;
+    align-items: start;
+
+    .section-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .active-plan-details {
+        border-left: 2px solid base.$black-25;
+        padding-left: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        gap: 1.6rem;
+        color: base.$white;
+        height: 100%;
+        align-items: center;
+
+        .no-active-plan-message {
+            font-size: 1.6rem;
+            margin: 0;
+            color: base.$grey-60;
+            grid-column: 1 / -1;
+        }
+        .cancel-subscription-button {
+            @include base.primary-button;
+            border: 1px solid base.$black-15;
+            border-radius: 0.6rem;
+            padding: 1.4rem auto;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            grid-column: 1 / -1;
+            justify-self: start;
+        }
+    }
+}
+
+#plans {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 8rem;
+    margin-bottom: 12rem;
+
+    .section-header {
+        @include base.flex-row;
+        align-items: end;
+        width: 100%;
+        margin-bottom: 6rem;
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 0 0 1rem;
+        }
+        
+        .section-description {
+            margin: 0;
+        }
+    }
+
+    .billing-cycles-selector {
+        @include base.flex-row;
+        align-items: center;
+        padding: 0.8rem;
+        background-color: base.$black-06;
+        border-radius: 0.8rem;
+        border: 1px solid base.$black-15;
+
+        .billing-cycle-button {
+            padding: 1.2rem 2rem;
+            background-color: transparent;
+            border: none;
+            border-radius: 0.6rem;
+            font-size: 1.4rem;
+            cursor: pointer;
+
+            &.active {
+                background-color: base.$black-12;
+                color: base.$white;
+            }
+        }
+    }
+
+    .pricing-cards {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+
+        .pricing-card {
+            box-sizing: border-box;
+            padding: 4rem;
+            background-color: base.$black-10;
+            border: 1px solid base.$black-15;
+            border-radius: 1rem;
+
+            .plan-title {
+                font-size: 2rem;
+                font-weight: 700;
+                margin: 0 0 1.2rem 0;
+            }
+            .plan-description {
+                margin: 0 0 4rem 0;
+            }
+            .plan-price {
+                font-weight: 500;
+                margin: 0 0 4rem 0;
+
+                .plan-price-numeric {
+                    font-size: 3rem;
+                    font-weight: 600;
+                    color: base.$white;
+                }
+            }
+
+            .pricing-card-buttons-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.2rem;
+
+                button {
+                    @include base.primary-button;
+                    border-radius: 0.6rem;
+                    padding: 1.4rem auto;
+                    font-size: 1.4rem;
+
+                    &.start-free-trial-button {
+                        background-color: base.$black-08;
+                        border: 1px solid base.$black-15;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#features {
+    display: flex;
+    flex-direction: column;
+    padding: 0 8rem;
+    margin-bottom: 12rem;
+
+    .feature-comparison-title {
+        font-size: 3.8rem;
+        font-weight: 700;
+        margin: 0 0 1rem;
+    }
+    .feature-comparison-description {
+        margin: 0 15rem 6rem 0;
+    }
+    .feature-comparison-table {
+        border-collapse: separate;
+        border-spacing: 0;
+        
+        thead {
+            background-color: base.$black-06;
+        }
+        th, td {
+            display: flex;
+            align-items: center;
+            padding: 2.4rem;
+            text-align: left;
+            border: 1px solid base.$black-15;
+        }
+        tr {
+            display: grid;
+        }
+
+        th {
+            @include base.flex-row;
+            justify-content: flex-start;
+            gap: 0.8rem;
+
+            .popular-badge {
+                background-color: base.$red-45;
+                color: base.$white;
+                font-size: 1.4rem;
+                font-weight: 500;
+                padding: 0.6rem;
+                border-radius: 0.2rem;
+            }
+            .feature-header-title {
+                font-size: 1.8rem;
+                font-weight: 600;
+                margin: 0;
+                display: inline-block;
+            }
+        }
+
+        tr:first-child th:first-child{
+            border-top-left-radius: 1rem;
+        }
+        tr:first-child th:last-child{
+            border-top-right-radius: 1rem;
+        }
+        tr:last-child td:first-child{
+            border-bottom-left-radius: 1rem;
+        }
+        tr:last-child td:last-child{
+            border-bottom-right-radius: 1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 1439px) {
+    .active-plan {
+        margin: 0 4rem 6rem;
+    }
+    #plans {
+        padding: 0 4rem;
+        margin-bottom: 10rem;
+
+        .billing-cycles-selector {
+            padding: 0.6rem;
+
+            .billing-cycle-button {
+                padding: 1rem 1.5rem;
+            }
+        }
+
+        .pricing-cards {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+
+            .pricing-card {
+                padding: 3rem;
+
+                .plan-title {
+                    font-size: 1.8rem;
+                }
+                .plan-price {
+                    margin-bottom: 3rem;
+
+                    .plan-price-numeric {
+                        font-size: 2.4rem;
+                    }
+                }
+
+                .pricing-card-buttons-container {
+                    gap: 1.2rem;
+
+                    button {
+                        padding: 1.4rem 0;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+
+    #features {
+        padding: 0 4rem;
+        margin-bottom: 10rem;
+
+        .feature-comparison-title {
+            font-size: 3.2rem;
+        }
+        .feature-comparison-description {
+            margin: 0 10rem 4rem 0;
+        }
+        .feature-comparison-table {
+            th, td {
+                padding: 1.6rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    header.main-header {
+        margin-bottom: 4rem;
+    }
+    .active-plan {
+        margin: 0 2rem 4rem;
+
+        .section-title {
+            font-size: 2.4rem;
+        }
+        .active-plan-details {
+            grid-template-columns: 1fr 2fr;
+            gap: 1rem;
+
+            .cancel-subscription-button {
+                padding: 1rem auto;
+                font-size: 1.2rem;
+            }
+        }
+    }
+    #plans {
+        padding: 0 2rem;
+        margin-bottom: 8rem;
+
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            .section-title {
+                font-size: 2.4rem;
+            }
+        }
+
+        .billing-cycles-selector {
+            padding: 0.8rem;
+
+            .billing-cycle-button {
+                padding: 1.2rem 2rem;
+            }
+        }
+
+        .pricing-cards {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+
+            .pricing-card {
+                padding: 2.4rem;
+                .plan-description {
+                    margin-bottom: 3rem;
+                }
+            }
+        }
+    }
+
+    #features {
+        padding: 0 2rem;
+        margin-bottom: 8rem;
+
+        .feature-comparison-title {
+            font-size: 2.4rem;
+        }
+        .feature-comparison-description {
+            margin: 0 0 4rem 0;
+        }
+
+        .feature-comparison-table {
+            th, td {
+                padding: 1.2rem 0.8rem;
+            }
+            th {
+                gap: 0.4rem;
+
+                .popular-badge {
+                    font-size: 1.2rem;
+                    padding: 0.4rem;
+                }
+                .feature-header-title {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .active-plan {
+        margin: 0 1.6rem 4rem;
+        grid-template-columns: 1fr;
+        .section-title {
+            font-size: 2rem;
+        }
+        .active-plan-details {
+            border-left: none;
+            border-top: 2px solid base.$black-25;
+            padding-left: 0;
+            padding-top: 2rem;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    #plans {
+        padding: 0 1.6rem;
+        .pricing-cards {
+            .pricing-card {
+                .plan-title {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+
+    #features {
+        padding: 0 1.6rem;
+        .feature-comparison-mobile {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            .plan-tab-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                width: 100%;
+                background-color: base.$black-06;
+                border-radius: 0.8rem;
+                border: 1px solid base.$black-15;
+                padding: 0.8rem;
+                box-sizing: border-box;
+
+                .plan-tab {
+                    @include base.primary-button;
+                    background-color: transparent;
+                    border: none;
+                    border-radius: 0.6rem;
+                    padding: 1.2rem 0;
+                    justify-content: center;
+
+                    &.active {
+                        background-color: base.$black-12;
+                        color: base.$white;
+                    }
+                }
+            }
+
+            .features-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2.4rem 2rem;
+                padding: 2.4rem;
+                background-color: base.$black-06;
+                border-radius: 1.2rem;
+                border: 1px solid base.$black-15;
+                grid-template-areas:
+                    "price freeTrial"
+                    "content content"
+                    "devices devices"
+                    "cancel hdr"
+                    "dolbyAtmos adFree"
+                    "offline sharing";
+                
+                .feature-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.4rem;
+
+                    .feature-value {
+                        color: base.$white;
+                    }
+
+                    &.price {
+                        grid-area: price;
+                    }
+                    &.content {
+                        grid-area: content;
+                    }
+                    &.devices {
+                        grid-area: devices;
+                    }
+                    &.freeTrial {
+                        grid-area: freeTrial;
+                    }
+                    &.cancelAnytime {
+                        grid-area: cancel;
+                    }
+                    &.hdr {
+                        grid-area: hdr;
+                    }
+                    &.dolbyAtmos {
+                        grid-area: dolbyAtmos;
+                    }
+                    &.adFree {
+                        grid-area: adFree;
+                    }
+                    &.offlineViewing {
+                        grid-area: offline;
+                    }
+                    &.familySharing {
+                        grid-area: sharing;
+                    }
+                }
+            }
+        }
+    }
+}}

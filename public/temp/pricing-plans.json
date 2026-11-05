@@ -1,0 +1,88 @@
+{
+  "comparisonDescription": "StreamVibe offers three different plans to fit your needs: Basic, Standard, and Premium. Compare the features of each plan and choose the one that's right for you.",
+  "billingCycles": [
+    { "id": "monthly", "label": "Monthly", "suffix": "/month" },
+    { "id": "yearly", "label": "Yearly", "suffix": "/year" }
+  ],
+  "currency": { "code": "USD", "symbol": "$" },
+  "plans": [
+    {
+      "id": "basic",
+      "name": "Basic Plan",
+      "shortName": "Basic",
+      "popular": false,
+      "description": "Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles.",
+      "price": { "monthly": 9.99, "yearly": 99.99 },
+      "freeTrialDays": 7,
+      "features": {
+        "content": "Access to a wide selection of movies and shows, including some new releases.",
+        "devices": "Watch on one device simultaneously",
+        "maxDevices": 1,
+        "maxResolution": "HD (720p)",
+        "freeTrial": "7 Days",
+        "cancelAnytime": "Yes",
+        "hdr": "No",
+        "dolbyAtmos": "No",
+        "adFree": "No",
+        "offlineViewing": "No",
+        "familySharing": "No"
+      }
+    },
+    {
+      "id": "standard",
+      "name": "Standard Plan",
+      "shortName": "Standard",
+      "popular": true,
+      "description": "Access to a wider selection of movies and shows, including most new releases and exclusive content.",
+      "price": { "monthly": 12.99, "yearly": 129.99 },
+      "freeTrialDays": 7,
+      "features": {
+        "content": "Access to a wider selection of movies and shows, including most new releases and exclusive content.",
+        "devices": "Watch on two devices simultaneously",
+        "maxDevices": 2,
+        "maxResolution": "Full HD (1080p)",
+        "freeTrial": "7 Days",
+        "cancelAnytime": "Yes",
+        "hdr": "Yes",
+        "dolbyAtmos": "Yes",
+        "adFree": "Yes",
+        "offlineViewing": "Yes, for select titles.",
+        "familySharing": "Yes, up to 5 family members."
+      }
+    },
+    {
+      "id": "premium",
+      "name": "Premium Plan",
+      "shortName": "Premium",
+      "popular": false,
+      "description": "Access to the widest selection of movies and shows, including all new releases and Offline Viewing.",
+      "price": { "monthly": 14.99, "yearly": 149.99 },
+      "freeTrialDays": 7,
+      "features": {
+        "content": "Access to the widest selection of movies and shows, including all new releases and Offline Viewing.",
+        "devices": "Watch on four devices simultaneously",
+        "maxDevices": 4,
+        "maxResolution": "4K Ultra HD",
+        "freeTrial": "7 Days",
+        "cancelAnytime": "Yes",
+        "hdr": "Yes",
+        "dolbyAtmos": "Yes",
+        "adFree": "Yes",
+        "offlineViewing": "Yes, for all titles.",
+        "familySharing": "Yes, up to 6 family members."
+      }
+    }
+  ],
+  "comparisonRows": [
+    { "key": "price", "label": "Price" },
+    { "key": "content", "label": "Content" },
+    { "key": "devices", "label": "Devices" },
+    { "key": "freeTrial", "label": "Free Trial" },
+    { "key": "cancelAnytime", "label": "Cancel Anytime" },
+    { "key": "hdr", "label": "HDR" },
+    { "key": "dolbyAtmos", "label": "Dolby Atmos" },
+    { "key": "adFree", "label": "Ad-Free" },
+    { "key": "offlineViewing", "label": "Offline Viewing" },
+    { "key": "familySharing", "label": "Family Sharing" }
+  ]
+}

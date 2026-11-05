@@ -1,0 +1,130 @@
+@use 'base';
+#login {
+.tab {
+    display: grid;
+    width: 58rem;
+    grid-template-columns: repeat(2, 1fr);
+    justify-self: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    background-color: base.$black-06;
+    border: 1px solid base.$black-15;
+    border-radius: 0.8rem;
+    padding: 1rem;
+
+    button {
+        @include base.primary-button;
+        padding: 1.6rem 6rem;
+        background-color: transparent;
+        gap: 1rem;
+        margin: 0;
+
+        &.active {
+            background-color: base.$red-45;
+            border-radius: 0.6rem;
+            border: 1px solid base.$black-15;
+        }
+    }
+}
+
+section {
+
+    form {
+        display: grid;
+        gap: 2rem;
+        justify-self: center;
+        align-items: center;
+        justify-items: start;
+        background-color: base.$black-06;
+        border: 1px solid base.$black-15;
+        border-radius: 0.8rem;
+        padding: 5rem;
+        width: 50rem;
+
+        .form-field {
+            @include base.flex-row;
+            gap: 1rem;
+            width: 100%;
+            grid-template-columns: 1fr 4fr;
+            align-items: center;
+            label {
+                font-size: 1.6rem;
+                font-weight: 500;
+                color: base.$white;
+            }
+            input {
+                width: 36rem;
+                padding: 1.2rem;
+                border-radius: 0.8rem;
+                border: 1px solid base.$black-15;
+                background-color: base.$black-10;
+                color: base.$white;
+            }
+        }
+
+        .submit-button {
+            @include base.primary-button;
+            justify-self: center;
+            padding: 1.6rem 6rem;
+            margin-top: 4rem;
+        }
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .tab {
+        width: 38rem;
+    }
+    section {
+        form {
+            width: 32rem;
+            padding: 4rem;
+            
+            .form-field {
+                input {
+                    width: 20rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .tab {
+        margin: 0 1.6rem 1rem;
+        width: 90%;
+        justify-items: center;
+        box-sizing: border-box;
+        padding: 0.6rem;
+        button {
+            width: 100%;
+            padding: 1rem 0;
+        }
+    }
+    section {
+        margin: 0 1.6rem;
+        form {
+            width: 100%;
+            padding: 2rem;
+            box-sizing: border-box;
+
+            .form-field {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                label {
+                    font-size: 1.4rem;
+                }
+                input {
+                    width: 15rem;
+                    padding: 1rem;
+                }
+            }
+
+            .submit-button {
+                width: 100%;
+                padding: 1rem 0;
+            }
+        }
+    }
+}
+}

@@ -1,0 +1,44 @@
+[
+    {
+      "id": "smartphones",
+      "name": "Smartphones",
+      "icon": "public/images/icons/smartphone.svg",
+      "description": "StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store.",
+      "platforms": ["Android", "iOS"]
+    },
+    {
+      "id": "tablet",
+      "name": "Tablet",
+      "icon": "public/images/icons/tablet.svg",
+      "description": "Enjoy a bigger screen on the go with our tablet app for iPad and Android tablets, with offline downloads for travel.",
+      "platforms": ["iPadOS", "Android", "Fire OS"]
+    },
+    {
+      "id": "smart-tv",
+      "name": "Smart TV",
+      "icon": "public/images/icons/smart-tv.svg",
+      "description": "Stream in up to 4K HDR on your living room screen. StreamVibe is available on Samsung, LG, Android TV, and Apple TV.",
+      "platforms": ["Tizen", "webOS", "Android TV", "tvOS", "Roku"]
+    },
+    {
+      "id": "laptops",
+      "name": "Laptops",
+      "icon": "public/images/icons/laptop.svg",
+      "description": "Watch directly in your browser on Windows, macOS, or Linux. No installation needed, just sign in and start streaming.",
+      "platforms": ["Windows", "macOS", "Linux", "ChromeOS"]
+    },
+    {
+      "id": "gaming-consoles",
+      "name": "Gaming Consoles",
+      "icon": "public/images/icons/gaming-console.svg",
+      "description": "Switch from gaming to binge-watching in seconds. Get the StreamVibe app on PlayStation and Xbox consoles.",
+      "platforms": ["PlayStation 5", "PlayStation 4", "Xbox Series X|S", "Xbox One"]
+    },
+    {
+      "id": "vr-headsets",
+      "name": "VR Headsets",
+      "icon": "public/images/icons/vr-headset.svg",
+      "description": "Step into a private virtual cinema. StreamVibe supports Meta Quest and Apple Vision Pro for an immersive viewing experience.",
+      "platforms": ["Meta Quest", "Apple Vision Pro"]
+    }
+  ]

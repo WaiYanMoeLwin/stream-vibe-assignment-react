@@ -1,0 +1,373 @@
+[
+  {
+    "id": "avengers-endgame",
+    "type": "movie",
+    "title": "Avengers: Endgame",
+    "music": [
+      { "name": "Alan Silvestri", "role": "Composer", "country": "United States", "photo": "public/images/posters/avengers-endgame.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Priya Nair", "country": "India", "rating": 5.0, "text": "Ten years of build-up paid off. The final battle had my whole theatre cheering, and the farewells hit harder than I expected." },
+      { "id": "r2", "name": "Lucas Moreau", "country": "France", "rating": 4.5, "text": "Three hours long, but it never drags. The time-travel middle act is fan service in the best possible way." },
+      { "id": "r3", "name": "Hana Sato", "country": "Japan", "rating": 4.0, "text": "A satisfying ending if you've followed the series. Newcomers will be lost, but this film clearly isn't made for them." }
+    ]
+  },
+  {
+    "id": "thor-love-and-thunder",
+    "type": "movie",
+    "title": "Thor: Love and Thunder",
+    "music": [
+      { "name": "Michael Giacchino", "role": "Composer", "country": "United States", "photo": "public/images/posters/thor-love-and-thunder.png" },
+      { "name": "Nami Melumad", "role": "Composer", "country": "Israel", "photo": "public/images/posters/thor-love-and-thunder.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Marcus Bell", "country": "USA", "rating": 3.5, "text": "Fun and colourful with a genuinely creepy villain, though the jokes undercut some of the emotional moments." },
+      { "id": "r2", "name": "Ananya Iyer", "country": "India", "rating": 3.0, "text": "Jane's return was the highlight for me. The screaming goats wore thin after the third time." },
+      { "id": "r3", "name": "Tom Riley", "country": "UK", "rating": 3.5, "text": "Not as tight as the previous Thor film, but a breezy, good-looking watch on a lazy evening." }
+    ]
+  },
+  {
+    "id": "extraction",
+    "type": "movie",
+    "title": "Extraction",
+    "music": [
+      { "name": "Henry Jackman", "role": "Composer", "country": "United Kingdom", "photo": "public/images/posters/extraction.png" },
+      { "name": "Alex Belcher", "role": "Composer", "country": "United Kingdom", "photo": "public/images/posters/extraction.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Ethan Walker", "country": "USA", "rating": 4.5, "text": "That long single-take chase sequence is worth the watch alone. Relentless from start to finish." },
+      { "id": "r2", "name": "Tanvir Hossain", "country": "Bangladesh", "rating": 3.5, "text": "Great action, thin story. Fun to see Dhaka on screen, even if it's mostly being blown up." },
+      { "id": "r3", "name": "Nina Petrova", "country": "Bulgaria", "rating": 4.0, "text": "Gritty and well choreographed. The quieter moments between the two leads land better than expected." }
+    ]
+  },
+  {
+    "id": "glass-onion",
+    "type": "movie",
+    "title": "Glass Onion: A Knives Out Mystery",
+    "music": [
+      { "name": "Nathan Johnson", "role": "Composer", "country": "United States", "photo": "public/images/posters/glass-onion.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Sophie Turner", "country": "UK", "rating": 4.5, "text": "Clever, colourful and full of twists. Benoit Blanc is a joy every time he opens his mouth." },
+      { "id": "r2", "name": "Aditya Kulkarni", "country": "India", "rating": 4.0, "text": "The midpoint reveal completely reframes the first half. I immediately wanted to rewatch it." },
+      { "id": "r3", "name": "Elena García", "country": "Argentina", "rating": 3.5, "text": "Not quite as tight as the first film, but the satire of rich tech types is very sharp." }
+    ]
+  },
+  {
+    "id": "the-gray-man",
+    "type": "movie",
+    "title": "The Gray Man",
+    "music": [
+      { "name": "Henry Jackman", "role": "Composer", "country": "United Kingdom", "photo": "public/images/posters/the-gray-man.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Ryan Mitchell", "country": "Canada", "rating": 3.5, "text": "Big, loud and globe-trotting. The villain is clearly having the time of his life." },
+      { "id": "r2", "name": "Divya Pillai", "country": "India", "rating": 3.0, "text": "The Prague tram fight is a highlight, but the plot is forgettable once the credits roll." },
+      { "id": "r3", "name": "Jakub Novák", "country": "Czech Republic", "rating": 3.0, "text": "Stylish action with not much underneath. A decent popcorn movie for a Friday night." }
+    ]
+  },
+  {
+    "id": "red-notice",
+    "type": "movie",
+    "title": "Red Notice",
+    "music": [
+      { "name": "Steve Jablonsky", "role": "Composer", "country": "United States", "photo": "public/images/posters/red-notice.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Ashley Grant", "country": "USA", "rating": 3.5, "text": "Three huge stars bantering through a globe-trotting heist. Silly, but the chemistry carries it." },
+      { "id": "r2", "name": "Marco Bianchi", "country": "Italy", "rating": 3.0, "text": "Lots of twists, some of which make no sense at all. Still an easy, breezy watch." },
+      { "id": "r3", "name": "Kiran Patel", "country": "India", "rating": 3.0, "text": "Fun enough, but it feels like a mix of a dozen better heist films." }
+    ]
+  },
+  {
+    "id": "the-irishman",
+    "type": "movie",
+    "title": "The Irishman",
+    "music": [
+      { "name": "Robbie Robertson", "role": "Composer", "country": "Canada", "photo": "public/images/posters/the-irishman.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Michael O'Brien", "country": "Ireland", "rating": 4.5, "text": "A slow, sad, reflective gangster epic. The last half hour is quietly devastating." },
+      { "id": "r2", "name": "Varun Desai", "country": "India", "rating": 4.0, "text": "Three and a half hours is a lot, but the performances make every scene worth it." },
+      { "id": "r3", "name": "Laura Schmidt", "country": "Germany", "rating": 3.5, "text": "Masterfully made, though the de-aging effects pulled me out of it a few times." }
+    ]
+  },
+  {
+    "id": "don't-look-up",
+    "type": "movie",
+    "title": "Don't Look Up",
+    "music": [
+      { "name": "Nicholas Britell", "role": "Composer", "country": "United States", "photo": "public/images/posters/dont-look-up.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Jessica Moore", "country": "USA", "rating": 4.0, "text": "Funny and frustrating in equal measure. The dinner scene near the end really stuck with me." },
+      { "id": "r2", "name": "Arnav Gupta", "country": "India", "rating": 3.5, "text": "The satire is not subtle at all, but the cast is clearly having fun with it." },
+      { "id": "r3", "name": "Henrik Nilsen", "country": "Norway", "rating": 3.0, "text": "Some sharp moments, but it hammers the same point for far too long." }
+    ]
+  },
+  {
+    "id": "enola-holmes",
+    "type": "movie",
+    "title": "Enola Holmes",
+    "music": [
+      { "name": "Daniel Pemberton", "role": "Composer", "country": "United Kingdom", "photo": "public/images/posters/enola-holmes.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Emma Clarke", "country": "UK", "rating": 4.0, "text": "Charming and energetic. The fourth-wall breaks make Enola feel like a friend you're solving cases with." },
+      { "id": "r2", "name": "Riya Sen", "country": "India", "rating": 4.0, "text": "A great family watch. Fun mystery, lovely costumes, and a lead who's easy to root for." },
+      { "id": "r3", "name": "Pablo Fernández", "country": "Spain", "rating": 3.5, "text": "Light and enjoyable, if a little long. The fight scenes are surprisingly good." }
+    ]
+  },
+  {
+    "id": "the-adam-project",
+    "type": "movie",
+    "title": "The Adam Project",
+    "music": [
+      { "name": "Rob Simonsen", "role": "Composer", "country": "United States", "photo": "public/images/posters/the-adam-project.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Kevin Park", "country": "USA", "rating": 4.0, "text": "A feel-good time-travel adventure with a surprising amount of heart about fathers and sons." },
+      { "id": "r2", "name": "Sneha Reddy", "country": "India", "rating": 3.5, "text": "The kid actor steals the show. The action is fine, but the family scenes are the best part." },
+      { "id": "r3", "name": "Thomas Müller", "country": "Austria", "rating": 3.5, "text": "Feels like an 80s Spielberg movie with modern effects. Easy Sunday afternoon viewing." }
+    ]
+  },
+  {
+    "id": "bird-box",
+    "type": "movie",
+    "title": "Bird Box",
+    "music": [
+      { "name": "Trent Reznor", "role": "Composer", "country": "United States", "photo": "public/images/posters/bird-box.png" },
+      { "name": "Atticus Ross", "role": "Composer", "country": "United Kingdom", "photo": "public/images/posters/bird-box.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Amanda Lopez", "country": "USA", "rating": 4.0, "text": "Tense from the first scene. The blindfolded river journey had me holding my breath." },
+      { "id": "r2", "name": "Rajesh Kumar", "country": "India", "rating": 3.5, "text": "A great premise, and not showing the creatures was the right call." },
+      { "id": "r3", "name": "Ingrid Berg", "country": "Finland", "rating": 3.0, "text": "Gripping in parts, but the ending felt a little too neat for me." }
+    ]
+  },
+  {
+    "id": "all-quiet-on-the-western-front",
+    "type": "movie",
+    "title": "All Quiet on the Western Front",
+    "music": [
+      { "name": "Volker Bertelmann", "role": "Composer", "country": "Germany", "photo": "public/images/posters/all-quiet-on-the-western-front.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Maximilian Koch", "country": "Germany", "rating": 5.0, "text": "Brutal and unforgettable. That three-note score still gives me chills." },
+      { "id": "r2", "name": "Samuel Wright", "country": "UK", "rating": 4.5, "text": "One of the most powerful anti-war films ever made. Not easy to watch, but essential." },
+      { "id": "r3", "name": "Ishaan Malhotra", "country": "India", "rating": 4.5, "text": "The cinematography is stunning, which makes the horror of the trenches hit even harder." }
+    ]
+  },
+  {
+    "id": "marriage-story",
+    "type": "movie",
+    "title": "Marriage Story",
+    "music": [
+      { "name": "Randy Newman", "role": "Composer", "country": "United States", "photo": "public/images/posters/marriage-story.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Rebecca Hall", "country": "USA", "rating": 4.5, "text": "Painfully honest. The argument scene is some of the best acting I've ever seen." },
+      { "id": "r2", "name": "Nandini Rao", "country": "India", "rating": 4.0, "text": "Neither character is the villain, and that's what makes it so sad and so real." },
+      { "id": "r3", "name": "Julien Blanc", "country": "Belgium", "rating": 4.0, "text": "Quiet, funny in unexpected places, and heartbreaking. Bring tissues." }
+    ]
+  },
+  {
+    "id": "6-underground",
+    "type": "movie",
+    "title": "6 Underground",
+    "music": [
+      { "name": "Lorne Balfe", "role": "Composer", "country": "United Kingdom", "photo": "public/images/posters/6-underground.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Tyler Brooks", "country": "USA", "rating": 3.5, "text": "The opening car chase through Florence is pure chaos in the best way." },
+      { "id": "r2", "name": "Aman Verma", "country": "India", "rating": 3.0, "text": "Explosions everywhere, story nowhere. Switch your brain off and it's fun." },
+      { "id": "r3", "name": "Giulia Romano", "country": "Italy", "rating": 2.5, "text": "Exhausting editing. Some great stunts are buried under constant cuts." }
+    ]
+  },
+  {
+    "id": "13-reasons-why",
+    "type": "show",
+    "title": "13 Reasons Why",
+    "music": [
+      { "name": "Eskmo", "role": "Composer", "country": "United States", "photo": "public/images/posters/13-reasons-why.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Sofia Martinez", "country": "Spain", "rating": 4.0, "text": "Season one is gripping and uncomfortable in a way that stays with you. Clay carries every single episode." },
+      { "id": "r2", "name": "Rahul Mehta", "country": "India", "rating": 3.0, "text": "Started strong, but the later seasons stretched the story far thinner than it needed to be." },
+      { "id": "r3", "name": "Emily Carter", "country": "USA", "rating": 3.5, "text": "Tough to watch at times. Worth it for the performances, but go in prepared for very heavy themes." }
+    ]
+  },
+  {
+    "id": "1899",
+    "type": "show",
+    "title": "1899",
+    "music": [
+      { "name": "Ben Frost", "role": "Composer", "country": "Australia", "photo": "public/images/posters/1899.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Jonas Weber", "country": "Germany", "rating": 4.5, "text": "Every episode ends on a hook. The multilingual cast makes life aboard the ship feel chaotic and real." },
+      { "id": "r2", "name": "Isabel Costa", "country": "Brazil", "rating": 4.0, "text": "Moody, beautiful, and confusing in a good way. A real shame we only got one season." },
+      { "id": "r3", "name": "Arjun Rao", "country": "India", "rating": 3.5, "text": "The ending raised more questions than it answered, but the atmosphere is unlike anything else." }
+    ]
+  },
+  {
+    "id": "glow",
+    "type": "show",
+    "title": "GLOW",
+    "music": [
+      { "name": "Craig Wedren", "role": "Composer", "country": "United States", "photo": "public/images/posters/glow.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Megan Brooks", "country": "USA", "rating": 4.5, "text": "Funny, warm, and surprisingly moving. Debbie steals every scene she's in." },
+      { "id": "r2", "name": "Kavya Reddy", "country": "India", "rating": 4.0, "text": "I knew nothing about wrestling and still loved it. The half-hour episodes make it very easy to binge." },
+      { "id": "r3", "name": "Daniel Okafor", "country": "Nigeria", "rating": 4.0, "text": "A brilliant ensemble cast, and the 80s costumes and soundtrack are a treat from start to finish." }
+    ]
+  },
+  {
+    "id": "locke-key",
+    "type": "show",
+    "title": "Locke & Key",
+    "music": [
+      { "name": "Torin Borrowdale", "role": "Composer", "country": "United States", "photo": "public/images/posters/locke-and-key.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Chloe Martin", "country": "Canada", "rating": 4.0, "text": "A cosy kind of spooky. The key powers are creative, and Keyhouse itself feels like a character." },
+      { "id": "r2", "name": "Vikram Singh", "country": "India", "rating": 3.5, "text": "Season one is the strongest. The family drama gets in the way of the magic later on." },
+      { "id": "r3", "name": "Lena Fischer", "country": "Germany", "rating": 3.5, "text": "A good weekend binge with my younger siblings. Not too scary, but still properly tense." }
+    ]
+  },
+  {
+    "id": "money-heist-korea",
+    "type": "show",
+    "title": "Money Heist: Korea – Joint Economic Area",
+    "music": [
+      { "name": "Kim Tae-seong", "role": "Composer", "country": "South Korea", "photo": "public/images/posters/money-heist-korea.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Min-jun Park", "country": "South Korea", "rating": 3.5, "text": "Moving the heist to a reunified Korea is a clever twist, and Berlin is excellent in this version." },
+      { "id": "r2", "name": "Neha Kapoor", "country": "India", "rating": 3.0, "text": "If you've seen the Spanish original, this follows it closely. Still fun, just with fewer surprises." },
+      { "id": "r3", "name": "Carlos Ruiz", "country": "Mexico", "rating": 3.5, "text": "Tight and fast-paced. The cat-and-mouse scenes between the Professor and Woo-jin are the best part." }
+    ]
+  },
+  {
+    "id": "the-sandman",
+    "type": "show",
+    "title": "The Sandman",
+    "music": [
+      { "name": "David Buckley", "role": "Composer", "country": "United Kingdom", "photo": "public/images/posters/the-sandman.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Oliver Hughes", "country": "UK", "rating": 5.0, "text": "Feels like the comic come to life. The episode with Death is one of the best hours of TV I've seen." },
+      { "id": "r2", "name": "Aisha Khan", "country": "Pakistan", "rating": 4.5, "text": "Gorgeous visuals, and the quiet, distant performance as Dream is exactly right." },
+      { "id": "r3", "name": "Mateo Rossi", "country": "Italy", "rating": 4.0, "text": "Slow in places, but the standalone episodes are fantastic and worth the wait." }
+    ]
+  },
+  {
+    "id": "shadow-and-bone",
+    "type": "show",
+    "title": "Shadow and Bone",
+    "music": [
+      { "name": "Joseph Trapanese", "role": "Composer", "country": "United States", "photo": "public/images/posters/shadow-and-bone.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Grace Kim", "country": "USA", "rating": 4.0, "text": "The Crows are the real stars. I'd happily watch a whole show of just Kaz, Inej and Jesper." },
+      { "id": "r2", "name": "Rohan Das", "country": "India", "rating": 4.0, "text": "Great world-building and costumes, and Kirigan makes a very convincing villain." },
+      { "id": "r3", "name": "Freya Larsen", "country": "Denmark", "rating": 3.5, "text": "Season two rushes through a lot of story, but it's still an enjoyable fantasy adventure." }
+    ]
+  },
+  {
+    "id": "stranger-things",
+    "type": "show",
+    "title": "Stranger Things",
+    "music": [
+      { "name": "Kyle Dixon", "role": "Composer", "country": "United States", "photo": "public/images/posters/stranger-things.png" },
+      { "name": "Michael Stein", "role": "Composer", "country": "United States", "photo": "public/images/posters/stranger-things.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Jake Morrison", "country": "USA", "rating": 5.0, "text": "I grew up with these kids. The finale wrapped everything up, and I'm not ashamed to say I cried." },
+      { "id": "r2", "name": "Meera Joshi", "country": "India", "rating": 4.5, "text": "The 80s vibe, the soundtrack, the friendships. Season four in particular is incredible." },
+      { "id": "r3", "name": "Sven Andersson", "country": "Sweden", "rating": 4.0, "text": "The seasons got longer and bigger, not always better, but it's still an absolute must-watch." }
+    ]
+  },
+  {
+    "id": "wednesday",
+    "type": "show",
+    "title": "Wednesday",
+    "music": [
+      { "name": "Danny Elfman", "role": "Composer", "country": "United States", "photo": "public/images/posters/wednesday.png" },
+      { "name": "Chris Bacon", "role": "Composer", "country": "United States", "photo": "public/images/posters/wednesday.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Isla Thompson", "country": "Australia", "rating": 4.5, "text": "Dry, weird, and very funny. The dance scene at the Rave'N lives rent-free in my head." },
+      { "id": "r2", "name": "Pooja Sharma", "country": "India", "rating": 4.0, "text": "A fun mystery with great gothic style. Enid and Wednesday's friendship is the heart of the show." },
+      { "id": "r3", "name": "Lucas Silva", "country": "Brazil", "rating": 4.0, "text": "Season two goes darker and more ambitious. Some episodes drag, but the finale makes up for it." }
+    ]
+  },
+  {
+    "id": "you",
+    "type": "show",
+    "title": "You",
+    "music": [
+      { "name": "Blake Neely", "role": "Composer", "country": "United States", "photo": "public/images/posters/you.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Hannah Lee", "country": "USA", "rating": 4.0, "text": "Joe's narration is creepily addictive. You end up rooting for him and hating yourself for it." },
+      { "id": "r2", "name": "Siddharth Menon", "country": "India", "rating": 4.0, "text": "Season one is a masterclass in tension. Later seasons get wilder but stay entertaining." },
+      { "id": "r3", "name": "Clara Dubois", "country": "France", "rating": 3.5, "text": "The London season was a fun change of pace, though I saw the big twist coming." }
+    ]
+  },
+  {
+    "id": "the-witcher",
+    "type": "show",
+    "title": "The Witcher",
+    "music": [
+      { "name": "Sonya Belousova", "role": "Composer", "country": "Russia", "photo": "public/images/posters/the-witcher.png" },
+      { "name": "Giona Ostinelli", "role": "Composer", "country": "Italy", "photo": "public/images/posters/the-witcher.png" },
+      { "name": "Joseph Trapanese", "role": "Composer", "country": "United States", "photo": "public/images/posters/the-witcher.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Tomasz Kowalski", "country": "Poland", "rating": 4.5, "text": "As a fan of the books, season one's monster-of-the-week episodes felt just right. Jaskier's song is stuck in my head forever." },
+      { "id": "r2", "name": "Rachel Adams", "country": "USA", "rating": 3.5, "text": "The jumping timelines in season one confused me at first, but it clicks by the end." },
+      { "id": "r3", "name": "Anjali Verma", "country": "India", "rating": 3.5, "text": "Great sword fights and creatures. The later seasons lost some of the magic for me." }
+    ]
+  },
+  {
+    "id": "dark",
+    "type": "show",
+    "title": "Dark",
+    "music": [
+      { "name": "Ben Frost", "role": "Composer", "country": "Australia", "photo": "public/images/posters/dark.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Felix Braun", "country": "Germany", "rating": 5.0, "text": "The most carefully plotted show I've ever watched. Every detail pays off by the final episode." },
+      { "id": "r2", "name": "Sara Lindqvist", "country": "Sweden", "rating": 4.5, "text": "You need a notebook to keep track of the family tree, but it's absolutely worth it." },
+      { "id": "r3", "name": "Nikhil Bose", "country": "India", "rating": 4.5, "text": "Haunting atmosphere and a near-perfect ending. Watch it in German with subtitles." }
+    ]
+  },
+  {
+    "id": "squid-game",
+    "type": "show",
+    "title": "Squid Game",
+    "music": [
+      { "name": "Jung Jae-il", "role": "Composer", "country": "South Korea", "photo": "public/images/posters/squid-game.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Ji-woo Han", "country": "South Korea", "rating": 5.0, "text": "Brutal, emotional and impossible to stop watching. The marbles episode broke my heart." },
+      { "id": "r2", "name": "Olivia Bennett", "country": "Australia", "rating": 4.5, "text": "Childhood games turned into a nightmare. The set design is unforgettable." },
+      { "id": "r3", "name": "Faisal Rahman", "country": "Malaysia", "rating": 4.0, "text": "A sharp critique of debt and inequality wrapped in a thriller. Later seasons don't quite match the first." }
+    ]
+  },
+  {
+    "id": "bridgerton",
+    "type": "show",
+    "title": "Bridgerton",
+    "music": [
+      { "name": "Kris Bowers", "role": "Composer", "country": "United States", "photo": "public/images/posters/bridgerton.png" }
+    ],
+    "reviews": [
+      { "id": "r1", "name": "Charlotte Evans", "country": "UK", "rating": 4.0, "text": "Lavish costumes, juicy gossip and string covers of pop songs. Pure escapist fun." },
+      { "id": "r2", "name": "Shreya Nair", "country": "India", "rating": 4.5, "text": "Season two is my favourite. The Sharma sisters brought so much warmth to the show." },
+      { "id": "r3", "name": "Amélie Laurent", "country": "France", "rating": 3.5, "text": "Gorgeous to look at, though the romance formula gets a little predictable each season." }
+    ]
+  }
+]

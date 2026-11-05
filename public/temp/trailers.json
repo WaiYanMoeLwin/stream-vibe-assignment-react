@@ -1,0 +1,49 @@
+{
+  "section": "trailers",
+  "items": [
+    {
+      "id": "stranger-things",
+      "type": "show",
+      "title": "Stranger Things",
+      "years": "2016–2025",
+      "description": "When a young boy vanishes in 1980s Hawkins, Indiana, his friends, family, and police chief uncover secret experiments, supernatural forces, and a strange girl with powers.",
+      "genres": ["Sci-Fi", "Horror", "Drama"],
+      "numberOfSeasons": 5,
+      "poster": "public/images/posters/stranger-things.svg",
+      "trailer": "public/videos/trailers/stranger-things.mp4"
+    },
+    {
+      "id": "wednesday",
+      "type": "show",
+      "title": "Wednesday",
+      "years": "2022–present",
+      "description": "Wednesday Addams is sent to Nevermore Academy, where she tries to master her psychic powers and solve a string of killings that have terrorized the town.",
+      "genres": ["Comedy", "Mystery", "Fantasy"],
+      "numberOfSeasons": 2,
+      "poster": "public/images/posters/wednesday.svg",
+      "trailer": "public/videos/trailers/wednesday.mp4"
+    },
+    {
+      "id": "avengers-endgame",
+      "type": "movie",
+      "title": "Avengers: Endgame",
+      "year": 2019,
+      "description": "With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos's actions and undo the chaos to the universe, no matter what consequences may be in store, and no matter who they face... Avenge the fallen.",
+      "genres": ["Action", "Sci-Fi", "Adventure"],
+      "runtime": "3h 1min",
+      "poster": "public/images/posters/avengers-endgame.svg",
+      "trailer": "public/videos/trailers/avengers-endgame.mp4"
+    },
+    {
+      "id": "the-sandman",
+      "type": "show",
+      "title": "The Sandman",
+      "years": "2022–2025",
+      "description": "After a century of imprisonment, Dream, the cosmic ruler of all dreams, escapes and sets out to restore his realm and reclaim what was taken from him.",
+      "genres": ["Fantasy", "Drama", "Horror"],
+      "numberOfSeasons": 2,
+      "poster": "public/images/posters/the-sandman.svg",
+      "trailer": "public/videos/trailers/the-sandman.mp4"
+    }
+  ]
+}

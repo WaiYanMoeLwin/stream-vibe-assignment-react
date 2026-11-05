@@ -1,0 +1,42 @@
+[
+    {
+      "id": "01",
+      "question": "What is StreamVibe?",
+      "answer": "StreamVibe is a streaming service that allows you to watch movies and shows on demand."
+    },
+    {
+      "id": "02",
+      "question": "How much does StreamVibe cost?",
+      "answer": "StreamVibe offers three plans: Basic at $9.99/month, Standard at $12.99/month, and Premium at $14.99/month. Each plan differs in video quality and the number of screens you can watch on at once."
+    },
+    {
+      "id": "03",
+      "question": "What content is available on StreamVibe?",
+      "answer": "StreamVibe has a wide library of movies, TV series, documentaries, anime, and StreamVibe Originals across all genres, with new titles added every week."
+    },
+    {
+      "id": "04",
+      "question": "How can I watch StreamVibe?",
+      "answer": "You can watch on smart TVs, smartphones, tablets, laptops, game consoles, and streaming devices. Just sign in to your account through our app or website."
+    },
+    {
+      "id": "05",
+      "question": "How do I sign up for StreamVibe?",
+      "answer": "Visit our website or download the app, choose a plan, create an account with your email, and enter your payment details. You can start watching right away."
+    },
+    {
+      "id": "06",
+      "question": "What is the StreamVibe free trial?",
+      "answer": "New members can try StreamVibe free for 7 days with full access to the entire library. You can cancel anytime before the trial ends and you won't be charged."
+    },
+    {
+      "id": "07",
+      "question": "How do I contact StreamVibe customer support?",
+      "answer": "Our support team is available 24/7 via live chat in the app, by email at support@streamvibe.com, or through the Help Center on our website."
+    },
+    {
+      "id": "08",
+      "question": "What are the StreamVibe payment methods?",
+      "answer": "We accept all major credit and debit cards, PayPal, and StreamVibe gift cards. Some regions also support mobile carrier billing."
+    }
+  ]

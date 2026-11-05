@@ -1,0 +1,91 @@
+{
+  "trendingNow": {
+    "movie": ["thor-love-and-thunder", "glass-onion", "avengers-endgame", "extraction", "the-adam-project", " don't-look-up"],
+    "show": ["wednesday", "squid-game", "stranger-things", "the-sandman", "bridgerton", "you", "locke-key", "1899", "dark"]
+  },
+  "newReleases": {
+    "movie": ["thor-love-and-thunder", "glass-onion", "the-adam-project", "all-quiet-on-the-western-front", "the-gray-man", "avengers-endgame"],
+    "show": ["stranger-things", "wednesday", "the-sandman", "you", "squid-game", "bridgerton", "the-witcher", "shadow-and-bone", "money-heist-korea", "1899", "locke-key"]
+  },
+  "mustWatch": {
+    "movie": ["avengers-endgame", "all-quiet-on-the-western-front", "the-irishman", "marriage-story", "glass-onion", "extraction"],
+    "show": ["stranger-things", "dark", "squid-game", "the-sandman", "wednesday", "glow", "you", "1899"]
+  },
+  "trailers": [
+    { "id": "stranger-things", "type": "show" },
+    { "id": "squid-game", "type": "show" },
+    { "id": "avengers-endgame", "type": "movie" },
+    { "id": "wednesday", "type": "show" },
+    { "id": "glass-onion", "type": "movie" },
+    { "id": "the-sandman", "type": "show" },
+    { "id": "extraction", "type": "movie" },
+    { "id": "dark", "type": "show" }
+  ],
+  "genres": [
+    {
+      "id": "action", "name": "Action",
+      "movie": ["avengers-endgame", "extraction", "thor-love-and-thunder", "the-gray-man", "red-notice", "6-underground", "all-quiet-on-the-western-front"],
+      "show": ["squid-game", "the-witcher", "money-heist-korea"]
+    },
+    {
+      "id": "adventure", "name": "Adventure",
+      "movie": ["avengers-endgame", "enola-holmes", "the-adam-project"],
+      "show": ["the-witcher", "shadow-and-bone"]
+    },
+    {
+      "id": "comedy", "name": "Comedy",
+      "movie": ["glass-onion", " don't-look-up", "red-notice", "thor-love-and-thunder", "the-adam-project"],
+      "show": ["wednesday", "glow"]
+    },
+    {
+      "id": "crime", "name": "Crime",
+      "movie": ["the-irishman", "glass-onion", "red-notice", "enola-holmes"],
+      "show": ["you", "money-heist-korea"]
+    },
+    {
+      "id": "drama", "name": "Drama",
+      "movie": ["all-quiet-on-the-western-front", "marriage-story", "the-irishman", " don't-look-up"],
+      "show": ["stranger-things", "squid-game", "you", "bridgerton", "13-reasons-why", "the-sandman", "shadow-and-bone", "locke-key", "1899", "glow"]
+    },
+    {
+      "id": "fantasy", "name": "Fantasy",
+      "movie": ["thor-love-and-thunder"],
+      "show": ["wednesday", "the-witcher", "the-sandman", "shadow-and-bone", "locke-key"]
+    },
+    {
+      "id": "horror", "name": "Horror",
+      "movie": ["bird-box"],
+      "show": ["stranger-things", "the-sandman", "locke-key"]
+    },
+    {
+      "id": "mystery", "name": "Mystery",
+      "movie": ["glass-onion", "enola-holmes"],
+      "show": ["wednesday", "dark", "13-reasons-why", "1899"]
+    },
+    {
+      "id": "romance", "name": "Romance",
+      "movie": ["marriage-story"],
+      "show": ["bridgerton"]
+    },
+    {
+      "id": "sci-fi", "name": "Sci-Fi",
+      "movie": ["avengers-endgame", " don't-look-up", "bird-box", "the-adam-project"],
+      "show": ["stranger-things", "dark", "1899"]
+    },
+    {
+      "id": "sports", "name": "Sports",
+      "movie": [],
+      "show": ["glow"]
+    },
+    {
+      "id": "teen", "name": "Teen",
+      "movie": [],
+      "show": ["13-reasons-why"]
+    },
+    {
+      "id": "thriller", "name": "Thriller",
+      "movie": ["extraction", "bird-box", "the-gray-man", "6-underground"],
+      "show": ["squid-game", "you", "dark", "money-heist-korea"]
+    }
+  ]
+}
