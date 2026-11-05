@@ -2,10 +2,10 @@ import Footer from './Footer';
 import FreeTrialCTA from './FreeTrialCTA';
 import MainHeader from './MainHeader';
 
-export default function MainTemplate({id, children}) {
+export default function MainTemplate({id, page, children}) {
     return (
         <div className="main-template" id={id}>
-            <MainHeader />
+            <MainHeader currentPage={page} />
             <main>
                 {children}
                 <FreeTrialCTA />

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../../api/api';
 
-export default function GenreCardList({contentType, genresData, className, page = 1, perPage = 5, ref, onScroll}) {
+export default function GenreCardList({contentType, genresData, className, page = 1, perPage = 5, ref, onScroll, shuffle=true}) {
     const [genreCardsData, setGenreCardsData] = useState([]);
     if (perPage === null) {
         perPage = genresData.length;
@@ -11,6 +11,13 @@ export default function GenreCardList({contentType, genresData, className, page 
         const genresDataPaginated = genresData.slice((page - 1) * perPage, (page * perPage) > genresData.length ? genresData.length : (page * perPage));
         const data = genresDataPaginated.map(async (genre) => {
             const contents = contentType.map((type) => genre[type]).flat();
+            // Randomly shuffle the contents array to get a random selection of content for each genre
+            if (shuffle) {
+                for (let i = contents.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [contents[i], contents[j]] = [contents[j], contents[i]];
+                }
+            }
             const contentsToShow = contents.slice(0, contents.length > 4 ? 4 : contents.length);
             const contentDetailsToShow = await Promise.all(contentsToShow.map(async (content) => {
                 const details = await api.fetchContentDetails(content);

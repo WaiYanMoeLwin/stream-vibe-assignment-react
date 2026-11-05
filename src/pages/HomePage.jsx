@@ -23,7 +23,7 @@ export default function HomePage() {
     }
     return (
         <>
-            <MainTemplate id="main">
+            <MainTemplate id="main" page="home">
                 <Hero />
                 <Categories perPage={categoriesPerPage} />
                 <Devices />
