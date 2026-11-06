@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import api from '../../api/api';
 
 export default function FAQs({ columns }) {
     const [faqLists, setFaqLists] = useState([]);
+    const isMobileScreen = useMediaQuery({ maxWidth: 767 });
 
     const handleOpenFAQ = (id) => {
         const faqContainer = document.querySelector(`.faq-container[data-key="${id}"]`);
@@ -67,7 +69,7 @@ export default function FAQs({ columns }) {
                                 <div className="faq-number">{faq.id}</div>
                                 <div className="faq-content">
                                     <h4 className="faq-question">{faq.question}</h4>
-                                    {columns > 1 && <p className="faq-answer hidden">{faq.answer}</p>}
+                                    {(columns > 1 || !isMobileScreen) && <p className="faq-answer hidden">{faq.answer}</p>}
                                 </div>
                             </div>
                             <button className="faq-toggle-button faq-open-button" aria-label="Open FAQ"
@@ -90,7 +92,7 @@ export default function FAQs({ columns }) {
                         );
 
                         return (<div className="faq-container" key={faq.id} data-key={faq.id}>
-                            {columns === 1 ? faqInnerSingleColumn : faqInner}
+                            {columns === 1 && isMobileScreen ? faqInnerSingleColumn : faqInner}
                         </div>)
                     })}
                 </div>
