@@ -31,7 +31,7 @@ export default function GenreCardList({contentType, genresData, className, page 
         Promise.all(data).then((results) => {
             setGenreCardsData(results);
         });
-    }, [contentType, genresData, page, perPage]);
+    }, [contentType, genresData, page, perPage, shuffle]);
 
     return (
         <article className={className} ref={ref} onScroll={onScroll}>
