@@ -1,6 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import MainTemplate from '../components/common/MainTemplate';
 import FAQs from '../components/home/FAQs';
+import ContactForm from '../components/support/ContactForm';
 import '../scss/support.scss';
 
 export default function SupportPage() {
@@ -13,6 +14,7 @@ export default function SupportPage() {
     }
     return (
         <MainTemplate id="support" page="support">
+            <ContactForm />
             <FAQs columns={faqColumns} />
         </MainTemplate>
     )
