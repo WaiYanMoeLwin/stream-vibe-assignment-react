@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../../api/api';
 
 export default function PricingPlans({id}) {
     const [plans, setPlans] = useState([]);
     const [billingCycles, setBillingCycles] = useState();
     const [selectedBillingCycle, setSelectedBillingCycle] = useState('monthly');
+    const navigate = useNavigate();
 
     useEffect(() => {
         api.fetchPricingPlans().then((data) => {
@@ -43,12 +45,12 @@ export default function PricingPlans({id}) {
                         </p>
                         <div className="pricing-card-buttons-container">
                             <button className="start-free-trial-button"
-                                onClick={() => window.location.href=`/checkout?plan=${plan.id}&billingCycle=${selectedBillingCycle}&trial=true`}
+                                onClick={() => navigate(`/checkout?plan=${plan.id}&billingCycle=${selectedBillingCycle}&trial=true`, { state: { plans: plans, billingCycles: billingCycles } })}
                             >
                                 Start Free Trial
                             </button>
                             <button className="choose-plan-button"
-                                onClick={() => window.location.href=`/checkout?plan=${plan.id}&billingCycle=${selectedBillingCycle}`}
+                                onClick={() => navigate(`/checkout?plan=${plan.id}&billingCycle=${selectedBillingCycle}`, { state: { plans: plans, billingCycles: billingCycles } })}
                             >
                                 Choose Plan
                             </button>

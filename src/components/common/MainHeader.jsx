@@ -32,7 +32,7 @@ export default function MainHeader({currentPage}) {
     )
 
     const handleLoginClick = () => {
-        localStorage.setItem('redirectAfterLogin', window.location.pathname);
+        localStorage.setItem('redirectAfterLogin', window.location.pathname + (window.location.hash || '') + (window.location.search || ''));
         navigate('/login');
     }
 

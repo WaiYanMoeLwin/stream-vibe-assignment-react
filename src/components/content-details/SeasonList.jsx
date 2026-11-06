@@ -1,13 +1,21 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import api from "../../api/api";
+import { fetchActivePlan } from "../../utils/subscription-info";
+import { isLoggedIn } from "../../utils/user";
 import { replaceImageSource } from "../../utils/utils";
+import MessageBox from "../common/MessageBox";
 
 export default function SeasonList({ contentDetails }) {
     const [seasons, setSeasons] = useState([]);
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const id = searchParams.get("id");
+    const [messageBox, setMessageBox] = useState(null);
+    const showMessageBox = (message, onOkay) => {
+        setMessageBox({ message, onClose: () => setMessageBox(null), onOkay });
+    };
 
     useEffect(() => {
         if (contentDetails && contentDetails.Type === 'series') {
@@ -66,12 +74,25 @@ export default function SeasonList({ contentDetails }) {
         });
     };
 
-    const onPlayClick = (seasonNumber, episodeNumber) => {
-        navigate(`/playback?id=${id}&type=series&season=${seasonNumber}&episode=${episodeNumber}`);
+    const onPlayClick = async (seasonNumber, episodeNumber) => {
+        const activePlan = await fetchActivePlan();
+        if (!isLoggedIn()) {
+            showMessageBox('You need to be logged in to play content.', () => {
+                window.localStorage.setItem('redirectAfterLogin', window.location.pathname + (window.location.hash || '') + (window.location.search || ''));
+                navigate('/login');
+            });
+        } else if (!activePlan) {
+            showMessageBox('You need an active subscription to play content.', () => {
+                navigate('/subscriptions');
+            });
+        } else {
+            navigate(`/playback?id=${id}&season=${seasonNumber}&episode=${episodeNumber}`);
+        }
     }
 
     return (
         <ol className="seasons-list">
+            {messageBox && createPortal(<MessageBox {...messageBox} />, document.body)}
             {seasons.sort((a, b) => a.seasonNumber - b.seasonNumber).map((season) => (
                 <li key={season.seasonNumber} className="season-item">
                     <div className="season-header">

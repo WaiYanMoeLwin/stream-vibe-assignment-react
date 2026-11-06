@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { useNavigate } from "react-router-dom";
 import api from "../../api/api";
+import { fetchActivePlan } from "../../utils/subscription-info";
 import { addToWatchList, isLoggedIn } from "../../utils/user";
 import { replaceImageSource } from "../../utils/utils";
 import MessageBox from "../common/MessageBox";
@@ -8,6 +10,7 @@ import MessageBox from "../common/MessageBox";
 export default function TrailerCarousel({ id, trailer, carousel=false, children }) {
     const [currentTrailer, setCurrentTrailer] = useState(null);
     const [messageBox, setMessageBox] = useState(null);
+    const navigate = useNavigate();
 
     const showMessageBox = (message, onOkay) => {
         setMessageBox({ message, onClose: () => setMessageBox(null), onOkay });
@@ -35,13 +38,34 @@ export default function TrailerCarousel({ id, trailer, carousel=false, children 
         if (!isLoggedIn()) {
             showMessageBox('You need to be logged in to add items to your watch list.', () => {
                 window.localStorage.setItem('redirectAfterLogin', window.location.href);
-                window.location.href = '/login';
+                navigate('/login');
             });
         } else {
             addToWatchList(trailer.id, showMessageBox);
         }
 
     }
+
+
+    const handlePlayNow = async () => {
+        const activePlan = await fetchActivePlan();
+        if (!isLoggedIn()) {
+            showMessageBox('You need to be logged in to play content.', () => {
+                window.localStorage.setItem('redirectAfterLogin', window.location.pathname + (window.location.hash || '') + (window.location.search || ''));
+                navigate('/login');
+            });
+        } else if (!activePlan) {
+            showMessageBox('You need an active subscription to play content.', () => {
+                navigate('/subscriptions');
+            });
+        } else {
+            if (currentTrailer && currentTrailer.Type === "series") {
+                navigate(`/playback?id=${trailer.id}&season=1&episode=1`);
+            } else {
+                navigate(`/playback?id=${trailer.id}`);
+            }
+        }
+    };
 
     return (
         <section id={id} style={trailerStyle}>
@@ -51,7 +75,9 @@ export default function TrailerCarousel({ id, trailer, carousel=false, children 
                 <p className={carousel ? "trailer-description" : "description"}>{currentTrailer ? currentTrailer.Plot : "No description available."}</p>
             </article>
             <article className="media-buttons-container">
-                <button className="play-button"><img src="public/images/icons/play.svg" alt="Play"/> Play Now</button>
+                <button className="play-button" onClick={handlePlayNow}>
+                    <img src="public/images/icons/play.svg" alt="Play"/> Play Now
+                </button>
                 <div className="watch-list-buttons">
                     <button className="add-to-watch-list-button" aria-label="Add to Watch List" onClick={handleAddToWatchList}>
                         <img src="public/images/icons/plus.svg" alt="Add to Watch List"/>
