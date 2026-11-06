@@ -54,6 +54,8 @@ main {
                 gap: 1rem;
 
                 .info {
+                    display: flex;
+                    align-items: center;
                     font-size: 1.2rem;
                     background-color: base.$black-06;
                     padding: 0.4rem 0.8rem;

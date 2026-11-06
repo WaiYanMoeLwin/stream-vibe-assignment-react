@@ -6,8 +6,7 @@ import ContentCards from "../components/movies-and-shows/ContentCards";
 import GenreCards from "../components/movies-and-shows/GenreCards";
 import TrailerCarousel from "../components/movies-and-shows/TrailerCarousel";
 import '../scss/movies-and-shows.scss';
-import { formatNumberWithUnits, formatRuntime, getRatingStars } from "../utils/content-info";
-
+import { contentInfos } from "../utils/content-info";
 
 export default function MoviesAndShowsPage() {
     const [contentList, setContentList] = useState([]);
@@ -29,40 +28,6 @@ export default function MoviesAndShowsPage() {
             console.log('Fetched content list:', data);
         });
     }, []);
-
-    const contentInfos = {
-        runtime: {
-            id: 'runtime',
-            label: 'Runtime',
-            value: (content) => formatRuntime(content.Runtime),
-            icon: () => <img src='/images/icons/clock.svg' alt="Runtime" />,
-
-        },
-        rating: {
-            id: 'rating',
-            label: 'Rating',
-            value: (content) => formatNumberWithUnits(content.imdbVotes),
-            icon: (content) => getRatingStars(content.imdbRating, 10),
-        },
-        views: {
-            id: 'views',
-            label: 'Views',
-            value: (content) => formatNumberWithUnits(content.imdbVotes),
-            icon: () => <img src='/images/icons/eye.svg' alt="Views" />,
-        },
-        releaseDate: {
-            id: 'release-date',
-            label: 'Release Date',
-            value: (content) => content.Released,
-            icon: () => (<span>Released at </span>), // No icon for release date
-        },
-        seasons: {
-            id: 'seasons',
-            label: 'Seasons',
-            value: (content) => content.totalSeasons + ' Seasons',
-            icon: () => <img src='/images/icons/stacks.svg' alt="Seasons" />,
-        }
-    }
 
     return (
         <>

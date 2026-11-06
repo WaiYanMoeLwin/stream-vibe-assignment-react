@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import api from "../../api/api";
+import { addToWatchList, isLoggedIn } from "../../utils/user";
 import { replaceImageSource } from "../../utils/utils";
+import MessageBox from "../common/MessageBox";
 
 export default function TrailerCarousel({ id, trailer, carousel=false, children }) {
     const [currentTrailer, setCurrentTrailer] = useState(null);
+    const [messageBox, setMessageBox] = useState(null);
+
+    const showMessageBox = (message, onOkay) => {
+        setMessageBox({ message, onClose: () => setMessageBox(null), onOkay });
+    };
 
     const currentTrailerPoster = currentTrailer ? currentTrailer.Poster : null;
     
@@ -23,10 +31,21 @@ export default function TrailerCarousel({ id, trailer, carousel=false, children 
         }
     }, [trailer]);
 
-    
+    const handleAddToWatchList = () => {
+        if (!isLoggedIn()) {
+            showMessageBox('You need to be logged in to add items to your watch list.', () => {
+                window.localStorage.setItem('redirectAfterLogin', window.location.href);
+                window.location.href = '/login';
+            });
+        } else {
+            addToWatchList(trailer.id, showMessageBox);
+        }
+
+    }
 
     return (
         <section id={id} style={trailerStyle}>
+            {messageBox && createPortal(<MessageBox {...messageBox} />, document.body)}
             <article className="section-header">
                 <h2 className={carousel ? "trailer-title" : "title"}>{currentTrailer ? currentTrailer.Title : "Trailer"}</h2>
                 <p className={carousel ? "trailer-description" : "description"}>{currentTrailer ? currentTrailer.Plot : "No description available."}</p>
@@ -34,7 +53,7 @@ export default function TrailerCarousel({ id, trailer, carousel=false, children 
             <article className="media-buttons-container">
                 <button className="play-button"><img src="public/images/icons/play.svg" alt="Play"/> Play Now</button>
                 <div className="watch-list-buttons">
-                    <button className="add-to-watch-list-button" aria-label="Add to Watch List">
+                    <button className="add-to-watch-list-button" aria-label="Add to Watch List" onClick={handleAddToWatchList}>
                         <img src="public/images/icons/plus.svg" alt="Add to Watch List"/>
                     </button>
                     <button className="like-button" aria-label="Like">
