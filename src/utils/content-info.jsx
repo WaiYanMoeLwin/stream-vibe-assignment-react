@@ -30,7 +30,7 @@ const formatRuntime = (runtime) => {
     return formattedRuntime;
 }
 
-const getRatingStars = (rating, maxRating = 5) => {
+const getRatingStars = (rating, maxRating = 5, className = "star-container", children) => {
     // Convert the rating to a number between 0 and 5
     const ratingOutOfFive = (parseFloat(rating) / maxRating * 5);
     const stars = [];
@@ -44,7 +44,7 @@ const getRatingStars = (rating, maxRating = 5) => {
             stars.push(<img src="/images/icons/star-empty.svg" alt="Star Rating" key={i} />);
         }
     }
-    return <div className="star-container">{stars}</div>;
+    return <div className={className}>{stars}{children}</div>;
 }
 
 

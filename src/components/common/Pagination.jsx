@@ -1,7 +1,7 @@
 
 
 
-export default function Pagination({ currentPage, totalPages, onPageChange }) {
+export default function Pagination({ currentPage, totalPages, onPageChange, showPages = true }) {
 
     return (
         <div className="pagination">
@@ -16,20 +16,22 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
             >
                 <img src="/images/icons/arrow-left.svg" alt="Previous" />
             </button>
-            <div className="pages">
-                {
-                    Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
-                        <button
-                            key={page}
-                            className={`pagination-page ${page === currentPage ? 'active' : ''}`}
-                            aria-label={`Page ${page}`}
-                            value={page}
-                            onClick={() => onPageChange(page)}
-                        >
-                        </button>
-                    ))
-                }
-            </div>
+            { showPages && (
+                <div className="pages">
+                    {
+                        Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
+                            <button
+                                key={page}
+                                className={`pagination-page ${page === currentPage ? 'active' : ''}`}
+                                aria-label={`Page ${page}`}
+                                value={page}
+                                onClick={() => onPageChange(page)}
+                            >
+                            </button>
+                        ))
+                    }
+                </div>
+            )}
             <button className="pagination-button" aria-label="Next"
                 onClick={() => {
                     if (currentPage < totalPages) {
