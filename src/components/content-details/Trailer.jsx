@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import api from "../../api/api";
-import { checkImageSource } from "../../utils/utils";
+import { replaceImageSource } from "../../utils/utils";
 
 export default function TrailerCarousel({ id, trailer, carousel=false, children }) {
     const [currentTrailer, setCurrentTrailer] = useState(null);
 
-    const currentTrailerPoster = currentTrailer ? currentTrailer.Poster : "/images/general-placeholder.jpg";
+    const currentTrailerPoster = currentTrailer ? currentTrailer.Poster : null;
     
     const trailerStyle = {
         backgroundImage: `linear-gradient(to bottom, rgba(20, 20, 20, 0), rgba(20, 20, 20, 1)), url(${currentTrailerPoster})`,
@@ -17,12 +17,8 @@ export default function TrailerCarousel({ id, trailer, carousel=false, children 
     useEffect(() => {
         if (trailer) {
             api.fetchContentDetails(trailer.id).then(async (details) => {
-                if (await checkImageSource(details.Poster)) {
-                    setCurrentTrailer(details);
-                } else {
-                    details.Poster = "/images/general-placeholder.jpg";
-                    setCurrentTrailer(details);
-                }
+                details.Poster = await replaceImageSource(details.Poster);
+                setCurrentTrailer(details);
             });
         }
     }, [trailer]);
