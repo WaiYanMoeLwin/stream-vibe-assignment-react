@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import api from "../../api/api";
 import { replaceImageSource } from "../../utils/utils";
 
 export default function SeasonList({ contentDetails }) {
     const [seasons, setSeasons] = useState([]);
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const id = searchParams.get("id");
 
     useEffect(() => {
         if (contentDetails && contentDetails.Type === 'series') {
@@ -65,7 +67,7 @@ export default function SeasonList({ contentDetails }) {
     };
 
     const onPlayClick = (seasonNumber, episodeNumber) => {
-        navigate(`/playback?id=${contentDetails.Title}&type=series&season=${seasonNumber}&episode=${episodeNumber}`);
+        navigate(`/playback?id=${id}&type=series&season=${seasonNumber}&episode=${episodeNumber}`);
     }
 
     return (
