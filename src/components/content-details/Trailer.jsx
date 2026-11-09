@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import { fetchActivePlan } from "../../utils/subscription-info";
-import { addToWatchList, isLoggedIn } from "../../utils/user";
+import { addToWatchList, getWatchList, isLoggedIn } from "../../utils/user";
 import { replaceImageSource } from "../../utils/utils";
 import MessageBox from "../common/MessageBox";
 
@@ -11,6 +11,23 @@ export default function TrailerCarousel({ id, trailer, carousel=false, children 
     const [currentTrailer, setCurrentTrailer] = useState(null);
     const [messageBox, setMessageBox] = useState(null);
     const navigate = useNavigate();
+    const [isInWatchList, setIsInWatchList] = useState(false);
+
+    useEffect(() => {
+        const fetchWatchListData = async () => {
+            try {
+                const watchListData = await getWatchList();
+                if (watchListData && Array.isArray(watchListData)) {
+                    const isInList = watchListData.some(item => item === trailer.id);
+                    setIsInWatchList(isInList);
+                }
+            } catch (error) {
+                console.error("Error fetching watch list:", error);
+            }
+        };
+
+        fetchWatchListData();
+    }, [trailer]);
 
     const showMessageBox = (message, onOkay) => {
         setMessageBox({ message, onClose: () => setMessageBox(null), onOkay });
@@ -41,7 +58,9 @@ export default function TrailerCarousel({ id, trailer, carousel=false, children 
                 navigate('/login');
             });
         } else {
-            addToWatchList(trailer.id, showMessageBox);
+            addToWatchList(trailer.id, showMessageBox).then(() => {
+                setIsInWatchList(true);
+            });
         }
 
     }
@@ -80,7 +99,11 @@ export default function TrailerCarousel({ id, trailer, carousel=false, children 
                 </button>
                 <div className="watch-list-buttons">
                     <button className="add-to-watch-list-button" aria-label="Add to Watch List" onClick={handleAddToWatchList}>
-                        <img src="public/images/icons/plus.svg" alt="Add to Watch List"/>
+                        {isInWatchList ? (
+                            <img className="in-watch-list" src="public/images/icons/bookmark.svg" alt="In Watch List"/>
+                        ) : (
+                            <img src="public/images/icons/plus.svg" alt="Add to Watch List"/>
+                        )}
                     </button>
                     <button className="like-button" aria-label="Like">
                         <img src="public/images/icons/like.svg" alt="Like"/>
