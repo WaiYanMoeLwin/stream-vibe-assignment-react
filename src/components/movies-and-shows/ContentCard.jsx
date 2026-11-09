@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import { replaceImageSource } from "../../utils/utils";
 import ContentInfo from "./ContentInfo";
@@ -6,6 +7,7 @@ import ContentInfo from "./ContentInfo";
 export default function ContentCard({ contentId, contentInfos }) {
     const [imageSrc, setImageSrc] = useState();
     const [contentDetails, setContentDetails] = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         api.fetchContentDetails(contentId).then(async (details) => {
@@ -16,7 +18,7 @@ export default function ContentCard({ contentId, contentInfos }) {
     }, [contentId]);
     
     const onClick = () => {
-        window.location.href = `/content-details?id=${contentId}`;
+        navigate(`/content-details?id=${contentId}`);
     }
 
     return (

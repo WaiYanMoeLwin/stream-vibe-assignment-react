@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { useMediaQuery } from "react-responsive";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getLoggedInUser, isLoggedIn, logout } from "../../utils/user";
 import SearchScreen from "./SearchScreen";
 
@@ -48,10 +48,10 @@ export default function MainHeader({currentPage}) {
             <img src="/images/logo.png" alt="StreamVibe Logo" className="logo"/>
             <nav className={`main-nav ${menuOpen ? 'active' : ''}`}>
                 <ul>
-                    <li><a href="/" aria-label="Home" className={currentPage === 'home' ? 'active' : ''}>Home</a></li>
-                    <li><a href="/movies-and-shows" aria-label="Movies & Shows" className={currentPage === 'movies-and-shows' ? 'active' : ''}>Movies &amp; Shows</a></li>
-                    <li><a href="/support" aria-label="Support" className={currentPage === 'support' ? 'active' : ''}>Support</a></li>
-                    <li><a href="/subscriptions" aria-label="Subscriptions" className={currentPage === 'subscriptions' ? 'active' : ''}>Subscriptions</a></li>
+                    <li><Link to="/" aria-label="Home" className={currentPage === 'home' ? 'active' : ''}>Home</Link></li>
+                    <li><Link to="/movies-and-shows" aria-label="Movies & Shows" className={currentPage === 'movies-and-shows' ? 'active' : ''}>Movies &amp; Shows</Link></li>
+                    <li><Link to="/support" aria-label="Support" className={currentPage === 'support' ? 'active' : ''}>Support</Link></li>
+                    <li><Link to="/subscriptions" aria-label="Subscriptions" className={currentPage === 'subscriptions' ? 'active' : ''}>Subscriptions</Link></li>
                     
                     {isSmallScreen && isUserLoggedIn && (profileMenu)}
                 </ul>
@@ -62,7 +62,7 @@ export default function MainHeader({currentPage}) {
                     <li><button aria-label="Notifications"><img src="/images/icons/noti-bell.svg"
                                 alt="Notifications"/></button></li>
                     <li>
-                        <a href="/login" className={isUserLoggedIn ? 'login hidden' : 'login'} onClick={handleLoginClick}><img src="/images/icons/login.svg" alt="Login"/></a>
+                        <Link to="/login" className={isUserLoggedIn ? 'login hidden' : 'login'} onClick={handleLoginClick}><img src="/images/icons/login.svg" alt="Login"/></Link>
                         {isUserLoggedIn && (
                             <div className="profile-container" style={{ position: 'relative' }}>
                                 <button className="user-profile" aria-label="User Profile" onClick={isSmallScreen ? null : handleProfileMenuClick}>

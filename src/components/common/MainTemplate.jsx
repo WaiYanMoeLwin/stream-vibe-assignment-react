@@ -1,6 +1,7 @@
 import Footer from './Footer';
 import FreeTrialCTA from './FreeTrialCTA';
 import MainHeader from './MainHeader';
+import ScrollToHash from './ScrollToHash';
 
 export default function MainTemplate({id, page, children, cta=true}) {
     return (
@@ -11,6 +12,7 @@ export default function MainTemplate({id, page, children, cta=true}) {
                 {cta && <FreeTrialCTA />}
             </main>
             <Footer />
+            <ScrollToHash />
         </div>
     );
 }

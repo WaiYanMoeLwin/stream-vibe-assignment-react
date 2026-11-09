@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 export default function Footer() {
@@ -5,43 +6,43 @@ export default function Footer() {
         <footer>
             <section className="footer-links">
                 <div className="footer-column">
-                    <h3 className="footer-column-title"><a href="/">Home</a></h3>
+                    <h3 className="footer-column-title"><Link to="/">Home</Link></h3>
                     <ul className="footer-column-list">
-                        <li><a href="/#categories">Categories</a></li>
-                        <li><a href="/#devices">Devices</a></li>
-                        <li><a href="/#pricing">Pricing</a></li>
-                        <li><a href="/#faq">FAQ</a></li>
+                        <li><Link to="/#categories">Categories</Link></li>
+                        <li><Link to="/#devices">Devices</Link></li>
+                        <li><Link to="/#pricing">Pricing</Link></li>
+                        <li><Link to="/#faq">FAQ</Link></li>
                     </ul>
                 </div>
                 <div className="footer-column">
-                    <h3 className="footer-column-title"><a href="/movies-and-shows">Movies</a></h3>
+                    <h3 className="footer-column-title"><Link to="/movies-and-shows">Movies</Link></h3>
                     <ul className="footer-column-list">
-                        <li><a href="/movies-and-shows#movies-genres">Genres</a></li>
-                        <li><a href="/movies-and-shows#movies-trending">Trending</a></li>
-                        <li><a href="/movies-and-shows#movies-new-releases">New Releases</a></li>
-                        <li><a href="/movies-and-shows#movies-popular">Popular</a></li>
+                        <li><Link to="/movies-and-shows#movies-genres">Genres</Link></li>
+                        <li><Link to="/movies-and-shows#movies-trending">Trending</Link></li>
+                        <li><Link to="/movies-and-shows#movies-new-releases">New Releases</Link></li>
+                        <li><Link to="/movies-and-shows#movies-popular">Popular</Link></li>
                     </ul>
                 </div>
                 <div className="footer-column">
-                    <h3 className="footer-column-title"><a href="/movies-and-shows">Shows</a></h3>
+                    <h3 className="footer-column-title"><Link to="/movies-and-shows">Shows</Link></h3>
                     <ul className="footer-column-list">
-                        <li><a href="/movies-and-shows#shows-genres">Genres</a></li>
-                        <li><a href="/movies-and-shows#shows-trending">Trending</a></li>
-                        <li><a href="/movies-and-shows#shows-new-releases">New Releases</a></li>
-                        <li><a href="/movies-and-shows#shows-popular">Popular</a></li>
+                        <li><Link to="/movies-and-shows#shows-genres">Genres</Link></li>
+                        <li><Link to="/movies-and-shows#shows-trending">Trending</Link></li>
+                        <li><Link to="/movies-and-shows#shows-new-releases">New Releases</Link></li>
+                        <li><Link to="/movies-and-shows#shows-popular">Popular</Link></li>
                     </ul>
                 </div>
                 <div className="footer-column">
-                    <h3 className="footer-column-title"><a href="/support">Support</a></h3>
+                    <h3 className="footer-column-title"><Link to="/support">Support</Link></h3>
                     <ul className="footer-column-list">
-                        <li><a href="/support">Contact Us</a></li>
+                        <li><Link to="/support">Contact Us</Link></li>
                     </ul>
                 </div>
                 <div className="footer-column">
-                    <h3 className="footer-column-title"><a href="/subscriptions">Subscriptions</a></h3>
+                    <h3 className="footer-column-title"><Link to="/subscriptions">Subscriptions</Link></h3>
                     <ul className="footer-column-list">
-                        <li><a href="/subscriptions#plans">Plans</a></li>
-                        <li><a href="/subscriptions#features">Features</a></li>
+                        <li><Link to="/subscriptions#plans">Plans</Link></li>
+                        <li><Link to="/subscriptions#features">Features</Link></li>
                     </ul>
                 </div>
                 <div className="footer-column">
@@ -62,9 +63,9 @@ export default function Footer() {
             <section className="footer-info">
                 <p>&copy; 2023 StreamVibe. All rights reserved.</p>
                 <div className="footer-legal-links">
-                    <a href="terms-of-use.html">Terms of Use</a> |
-                    <a href="privacy-policy.html">Privacy Policy</a> |
-                    <a href="cookie-policy.html">Cookie Policy</a>
+                    <Link to="/terms-of-use">Terms of Use</Link> |
+                    <Link to="/privacy-policy">Privacy Policy</Link> |
+                    <Link to="/cookie-policy">Cookie Policy</Link>
                 </div>
             </section>
         </footer>
