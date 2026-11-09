@@ -16,12 +16,12 @@ export default function MainInfo({ contentDetails, mockContentDetails }) {
     }
 
     const totalCastPages = Math.ceil(contentDetails.Actors.split(',').length / castPerPage);
-    const totalReviewsPages = Math.ceil(mockContentDetails.reviews.length / reviewsPerPage);
+    const totalReviewsPages = mockContentDetails ? Math.ceil(mockContentDetails.reviews.length / reviewsPerPage) : 0;
     const [currentCastPage, setCurrentCastPage] = useState(1);
     const [currentReviewsPage, setCurrentReviewsPage] = useState(1);
 
     const casts = contentDetails.Actors.split(',').map(actor => actor.trim());
-    const reviews = mockContentDetails.reviews;
+    const reviews = mockContentDetails ? mockContentDetails.reviews : [];
 
     const castToShow = casts.slice((currentCastPage - 1) * castPerPage, (currentCastPage * castPerPage) > casts.length ? casts.length : (currentCastPage * castPerPage));
     const reviewsToShow = reviews.slice((currentReviewsPage - 1) * reviewsPerPage, (currentReviewsPage * reviewsPerPage) > reviews.length ? reviews.length : (currentReviewsPage * reviewsPerPage));

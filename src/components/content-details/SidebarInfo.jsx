@@ -92,24 +92,26 @@ export default function SidebarInfo({ contentDetails, mockContentDetails }) {
                     ))}
                 </ul>
             </section>
-            <section className="music-section">
-                <header className="section-header">
-                    <h2 className="section-title">
-                        Music
-                    </h2>
-                </header>
-                <ul className="music-composers">
-                    {mockContentDetails.music.map((composer, index) => (
-                        <li key={index} className="music-composer">
-                            <img src="/images/person-placeholder.jpg" alt={composer.name} title={composer.name} />
-                            <div className="info">
-                                <h3 className="name-text">{composer.name}</h3>
-                                <span className="location">{composer.country}</span>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </section>
+            {mockContentDetails && mockContentDetails.music && (
+                <section className="music-section">
+                    <header className="section-header">
+                        <h2 className="section-title">
+                            Music
+                        </h2>
+                    </header>
+                    <ul className="music-composers">
+                        {mockContentDetails.music.map((composer, index) => (
+                            <li key={index} className="music-composer">
+                                <img src="/images/person-placeholder.jpg" alt={composer.name} title={composer.name} />
+                                <div className="info">
+                                    <h3 className="name-text">{composer.name}</h3>
+                                    <span className="location">{composer.country}</span>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            )}
         </aside>
     )
 }

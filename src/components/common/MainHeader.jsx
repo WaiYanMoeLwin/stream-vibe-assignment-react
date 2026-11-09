@@ -1,14 +1,16 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
 import { getLoggedInUser, isLoggedIn, logout } from "../../utils/user";
+import SearchScreen from "./SearchScreen";
 
 export default function MainHeader({currentPage}) {
     const [menuOpen, setMenuOpen] = useState(false);
     const navigate = useNavigate();
     const isSmallScreen = useMediaQuery({ maxWidth: 1023 });
     const [profileMenuOpen, setProfileMenuOpen] = useState(isSmallScreen ? true : false);
-    
+    const [searchOpen, setSearchOpen] = useState(false);
 
     const isUserLoggedIn = isLoggedIn();
     const loggedInUser = isUserLoggedIn ? getLoggedInUser() : null;
@@ -36,10 +38,13 @@ export default function MainHeader({currentPage}) {
         navigate('/login');
     }
 
-
+    const handleSearchClick = () => {
+        setSearchOpen(true);
+    }
 
     return (
         <header className="main-header">
+            {searchOpen && createPortal(<SearchScreen onClose={() => setSearchOpen(false)} />, document.body)}
             <img src="/images/logo.png" alt="StreamVibe Logo" className="logo"/>
             <nav className={`main-nav ${menuOpen ? 'active' : ''}`}>
                 <ul>
@@ -53,7 +58,7 @@ export default function MainHeader({currentPage}) {
             </nav>
             <nav className={`${menuOpen ? 'active' : ''}`}>
                 <ul>
-                    <li><button aria-label="Search"><img src="/images/icons/search.svg" alt="Search"/></button></li>
+                    <li><button aria-label="Search" onClick={handleSearchClick}><img src="/images/icons/search.svg" alt="Search"/></button></li>
                     <li><button aria-label="Notifications"><img src="/images/icons/noti-bell.svg"
                                 alt="Notifications"/></button></li>
                     <li>

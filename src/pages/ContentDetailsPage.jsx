@@ -31,7 +31,7 @@ export default function ContentDetailsPage() {
                 carousel={false}
             />
             <section id="content-info">
-                { contentDetails && mockContentDetails && (
+                { contentDetails && (
                     <>
                     <MainInfo contentDetails={contentDetails} mockContentDetails={mockContentDetails} />
                     {!isSmallScreen && <SidebarInfo contentDetails={contentDetails} mockContentDetails={mockContentDetails} />}

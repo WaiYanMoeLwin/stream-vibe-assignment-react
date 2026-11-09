@@ -34,12 +34,14 @@ export default function SeasonList({ contentDetails }) {
                                         return updatedSeasons;
                                     }
                                     updatedSeasons[seasonIndex].episodes.push(episodeDetails);
+                                    updatedSeasons[seasonIndex].episodes.sort((a, b) => a.Episode - b.Episode);
                                 } else {
                                     updatedSeasons.push({
                                     seasonNumber: seasonNumber,
                                     episodes: [episodeDetails]
                                 });
                             }
+                            updatedSeasons.sort((a, b) => a.seasonNumber - b.seasonNumber);
                             return updatedSeasons;
                         });
                     });
