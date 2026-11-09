@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import MainTemplate from '../components/common/MainTemplate';
@@ -117,23 +117,23 @@ export default function CheckoutPage() {
                     <div className="label">Select Plan:</div>
                     <div className="form-field plan">
                         {plans && plans.map((plan) => (
-                            <>
+                            <Fragment key={plan.id}>
                             <input id={`plan-${plan.id}`} type="radio" name="plan" value={plan.id} checked={selectedPlanId === plan.id} onChange={() => setSelectedPlanId(plan.id)} required/>
-                            <label key={plan.id} htmlFor={`plan-${plan.id}`}>
+                            <label htmlFor={`plan-${plan.id}`}>
                                 {plan.shortName}
                             </label>
-                            </>
+                            </Fragment>
                         ))}
                     </div>
                     <div className="label">Select Billing Cycle:</div>
                     <div className="form-field billing-cycle">
                         {billingCycles && billingCycles.map((cycle) => (
-                            <>
+                            <Fragment key={cycle.id}>
                             <input id={`billing-cycle-${cycle.id}`} type="radio" name="billing-cycle" value={cycle.id} checked={selectedBillingCycleId === cycle.id} onChange={() => setSelectedBillingCycleId(cycle.id)} required/>
-                            <label key={cycle.id} htmlFor={`billing-cycle-${cycle.id}`}>
+                            <label htmlFor={`billing-cycle-${cycle.id}`}>
                                 {cycle.label}
                             </label>
-                            </>
+                            </Fragment>
                         ))}
                     </div>
                     <div className="form-field free-trial">
@@ -143,12 +143,12 @@ export default function CheckoutPage() {
                     <div className="label">Select Payment Method:</div>
                     <div className="form-field payment-method">
                         {paymentMethods && paymentMethods.map((method) => (
-                            <>
+                            <Fragment key={method.id}>
                             <input id={`payment-method-${method.id}`} type="radio" name="payment-method" value={method.id} checked={selectedPaymentMethod === method.id} onChange={() => setSelectedPaymentMethod(method.id)} required/>
-                            <label key={method.id} htmlFor={`payment-method-${method.id}`}>
+                            <label htmlFor={`payment-method-${method.id}`}>
                                 {method.label}
                             </label>
-                            </>
+                            </Fragment>
                         ))}
                     </div>
                     <div className="form-field card-number">
