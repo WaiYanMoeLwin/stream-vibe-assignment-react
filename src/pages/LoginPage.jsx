@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import MainTemplate from "../components/common/MainTemplate";
@@ -12,6 +12,17 @@ export default function LoginPage() {
     const [registerData, setRegisterData] = useState({firstname: "", lastname: "", email: "", password: ""});
     const [messageBox, setMessageBox] = useState(null);
     const navigate = useNavigate();
+
+    const loginEmailRef = useRef(null);
+    const registerFirstNameRef = useRef(null);
+
+    useEffect(() => {
+        if (currentTab === "login") {
+            loginEmailRef.current?.focus();
+        } else {
+            registerFirstNameRef.current?.focus();
+        }
+    }, [currentTab]);
 
     const showMessageBox = (message, onOkay) => {
         setMessageBox({ message, onClose: () => setMessageBox(null), onOkay });
@@ -79,7 +90,7 @@ export default function LoginPage() {
                 <form className="login-form">
                     <div className="form-field email">
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Enter Email" value={loginData.email} required onChange={handleInputChange}/>
+                        <input type="email" ref={loginEmailRef} id="email" name="email" placeholder="Enter Email" value={loginData.email} required onChange={handleInputChange}/>
                     </div>
 
                     <div className="form-field password">
@@ -93,7 +104,7 @@ export default function LoginPage() {
                 <form className="register-form">
                     <div className="form-field first-name">
                         <label htmlFor="first-name">First Name</label>
-                        <input type="text" id="first-name" name="firstname" placeholder="Enter First Name" value={registerData.firstname} required onChange={handleInputChange}/>
+                        <input type="text" ref={registerFirstNameRef} id="first-name" name="firstname" placeholder="Enter First Name" value={registerData.firstname} required onChange={handleInputChange}/>
                     </div>
 
                     <div className="form-field last-name">

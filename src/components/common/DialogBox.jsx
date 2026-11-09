@@ -1,7 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function DialogBox({ fields, onClose, onOkay, showMessageBox }) {
     const [formData, setFormData] = useState({});
+    const firstInputRef = useRef(null);
+
+    useEffect(() => {
+        if (firstInputRef.current) {
+            firstInputRef.current.focus();
+        }
+    }, []);
 
     const handleOkay = (formData) => {
         for (const field of fields) {
@@ -21,9 +28,9 @@ export default function DialogBox({ fields, onClose, onOkay, showMessageBox }) {
                         <>
                             <label key={`label-${index}`} htmlFor={field.name}>{field.label}</label>
                             {field.type === 'textarea' ? (
-                                <textarea key={`textarea-${index}`} id={field.name} name={field.name} required={field.required} onChange={(e) => setFormData({...formData, [field.name]: e.target.value})}></textarea>
+                                <textarea ref={field===fields[0] ? firstInputRef : null} key={`textarea-${index}`} id={field.name} name={field.name} required={field.required} onChange={(e) => setFormData({...formData, [field.name]: e.target.value})}></textarea>
                             ) : (
-                                <input type={field.type} key={`input-${index}`} id={field.name} required={field.required} name={field.name} onChange={(e) => setFormData({...formData, [field.name]: e.target.value})} />
+                                <input ref={field===fields[0] ? firstInputRef : null} type={field.type} key={`input-${index}`} id={field.name} required={field.required} name={field.name} onChange={(e) => setFormData({...formData, [field.name]: e.target.value})} />
                             )}
                         </>
                     ))}

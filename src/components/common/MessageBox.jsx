@@ -1,6 +1,14 @@
-
+import { useEffect, useRef } from 'react';
 
 export default function MessageBox({ message, onClose, onOkay }) {
+    const okayButtonRef = useRef(null);
+
+    useEffect(() => {
+        if (okayButtonRef.current) {
+            okayButtonRef.current.focus();
+        }
+    }, []);
+
     const handleOkay = () => {
         onOkay && onOkay();
         onClose();
@@ -14,7 +22,7 @@ export default function MessageBox({ message, onClose, onOkay }) {
                 </button>
                 <p className="message-text">{message}</p>
 
-                <button className="message-ok-button" onClick={handleOkay}>
+                <button className="message-ok-button" ref={okayButtonRef} onClick={handleOkay}>
                     OK
                 </button>
             </div>
