@@ -6,8 +6,18 @@ import Scrollbar from "../common/Scrollbar";
 
 export default function GenreCards({ contentType, genres, title, id, containerClassName, perPage}) {
     const [currentPage, setCurrentPage] = useState(1);
-    const totalPages = perPage ? Math.ceil(genres.length / perPage) : 1;
-    perPage = perPage || genres.length; // Show all genres if perPage is not provided
+    const [filteredGenres, setFilteredGenres] = useState([]);
+    // const filteredGenres = genres.filter((genre) => contentType.map((type) => genre[type]).flat().length > 0);
+    const totalPages = perPage ? Math.ceil(filteredGenres.length / perPage) : 1;
+    perPage = perPage || filteredGenres.length; // Show all genres if perPage is not provided
+
+    useEffect(() => {
+        async function filterGenres() {
+            const filtered = genres.filter((genre) => contentType.map((type) => genre[type]).flat().length > 0);
+            setFilteredGenres(filtered);
+        }
+        filterGenres();
+    }, [genres, contentType, perPage]);
 
     const [cardListVisibleWidth, setCardListVisibleWidth] = useState(0);
     const [cardListTotalWidth, setCardListTotalWidth] = useState(1);
@@ -18,11 +28,16 @@ export default function GenreCards({ contentType, genres, title, id, containerCl
     
     const cardListRef = useRef();
     useEffect(() => {
-        if (cardListRef.current) {
-            setCardListVisibleWidth(cardListRef.current.offsetWidth);
-            setCardListTotalWidth(cardListRef.current.scrollWidth);
-        }
-    });
+        const updateCardListDimensions = async () => {
+            if (cardListRef.current.children.length === filteredGenres.length) {
+                setCardListVisibleWidth(cardListRef.current.offsetWidth);
+                setCardListTotalWidth(cardListRef.current.scrollWidth);
+            } else {
+                setTimeout(updateCardListDimensions, 100);
+            }
+        };
+        updateCardListDimensions();
+    }, [filteredGenres]);
 
     const handleCardListScroll = () => {
         if (cardListRef.current) {
@@ -48,7 +63,7 @@ export default function GenreCards({ contentType, genres, title, id, containerCl
             </header>
             <GenreCardList
                 contentType={contentType}
-                genresData={genres}
+                genresData={filteredGenres}
                 className={containerClassName}
                 page={currentPage}
                 perPage={perPage}

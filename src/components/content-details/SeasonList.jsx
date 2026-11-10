@@ -95,7 +95,7 @@ export default function SeasonList({ contentDetails }) {
     return (
         <ol className="seasons-list">
             {messageBox && createPortal(<MessageBox {...messageBox} />, document.body)}
-            {seasons.sort((a, b) => a.seasonNumber - b.seasonNumber).map((season) => (
+            {seasons.toSorted((a, b) => a.seasonNumber - b.seasonNumber).map((season) => (
                 <li key={season.seasonNumber} className="season-item">
                     <div className="season-header">
                         <div className="season-info">

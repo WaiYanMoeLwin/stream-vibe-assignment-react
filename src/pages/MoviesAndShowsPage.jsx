@@ -34,8 +34,8 @@ export default function MoviesAndShowsPage() {
             <MainTemplate id="movies-and-shows" page="movies-and-shows">
                 <TrailerCarousel trailers={contentList['trailers']} />
                 <div className="tab">
-                    <button className="tab-button active" data-target="movies" onClick={() => setActiveTab('movies')}>Movies</button>
-                    <button className="tab-button" data-target="shows" onClick={() => setActiveTab('shows')}>Shows</button>
+                    <button className={`tab-button ${activeTab === 'movies' ? 'active' : ''}`} data-target="movies" onClick={() => setActiveTab('movies')}>Movies</button>
+                    <button className={`tab-button ${activeTab === 'shows' ? 'active' : ''}`} data-target="shows" onClick={() => setActiveTab('shows')}>Shows</button>
                 </div>
 
                 {contentTypes.map((type) => (!isSmallScreen || activeTab === type.id) && (

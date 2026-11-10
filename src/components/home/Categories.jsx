@@ -8,6 +8,7 @@ export default function Categories({perPage = 5}) {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [categories, setCategories] = useState([]);
+    const [contentType] = useState(["movie", "show"]);
 
     const [cardListVisibleWidth, setCardListVisibleWidth] = useState(0);
     const [cardListTotalWidth, setCardListTotalWidth] = useState(1);
@@ -18,11 +19,16 @@ export default function Categories({perPage = 5}) {
     
     const cardListRef = useRef();
     useEffect(() => {
-        if (cardListRef.current) {
-            setCardListVisibleWidth(cardListRef.current.offsetWidth);
-            setCardListTotalWidth(cardListRef.current.scrollWidth);
-        }
-    });
+        const updateCardListDimensions = async () => {
+            if (cardListRef.current.children.length === categories.length) {
+                setCardListVisibleWidth(cardListRef.current.offsetWidth);
+                setCardListTotalWidth(cardListRef.current.scrollWidth);
+            } else {
+                setTimeout(updateCardListDimensions, 100);
+            }
+        };
+        updateCardListDimensions();
+    }, [categories]);
 
     const handleCardListScroll = () => {
         if (cardListRef.current) {
@@ -64,7 +70,7 @@ export default function Categories({perPage = 5}) {
             </header>
             <GenreCardList
                 className="category-cards"
-                contentType={["movie", "show"]}
+                contentType={contentType}
                 genresData={categories}
                 perPage={perPage}
                 page={currentPage}

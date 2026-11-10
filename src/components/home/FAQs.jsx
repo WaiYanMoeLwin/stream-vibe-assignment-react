@@ -19,34 +19,26 @@ export default function FAQs({ columns }) {
         setMessageBox({ message, onClose: () => setMessageBox(null), onOkay });
     };
 
-    const handleOpenFAQ = (id) => {
-        const faqContainer = document.querySelector(`.faq-container[data-key="${id}"]`);
-        if (faqContainer) {
-            const answer = faqContainer.querySelector('.faq-answer');
-            const openButton = faqContainer.querySelector('.faq-open-button');
-            const closeButton = faqContainer.querySelector('.faq-close-button');
-            if (answer && openButton && closeButton) {
-                answer.classList.remove('hidden');
-                openButton.classList.add('hidden');
-                closeButton.classList.remove('hidden');
-                faqContainer.classList.add('expanded');
+    const handleOpenFAQ = (listIndex, faqIndex) => {
+        setFaqLists((prevFaqLists) => {
+            const updatedFaqLists = [...prevFaqLists];
+            const currentFAQ = updatedFaqLists[listIndex][faqIndex];
+            if (currentFAQ) {
+                currentFAQ.isExpanded = true;
             }
-        }
+            return updatedFaqLists;
+        });
     }
 
-    const handleCloseFAQ = (id) => {
-        const faqContainer = document.querySelector(`.faq-container[data-key="${id}"]`);
-        if (faqContainer) {
-            const answer = faqContainer.querySelector('.faq-answer');
-            const openButton = faqContainer.querySelector('.faq-open-button');
-            const closeButton = faqContainer.querySelector('.faq-close-button');
-            if (answer && openButton && closeButton) {
-                answer.classList.add('hidden');
-                openButton.classList.remove('hidden');
-                closeButton.classList.add('hidden');
-                faqContainer.classList.remove('expanded');
+    const handleCloseFAQ = (listIndex, faqIndex) => {
+        setFaqLists((prevFaqLists) => {
+            const updatedFaqLists = [...prevFaqLists];
+            const currentFAQ = updatedFaqLists[listIndex][faqIndex];
+            if (currentFAQ) {
+                currentFAQ.isExpanded = false;
             }
-        }
+            return updatedFaqLists;
+        });
     }
 
     useEffect(() => {
@@ -117,22 +109,22 @@ export default function FAQs({ columns }) {
         <article className="faq-items-container">
             {faqLists.map((faqList, index) => (
                 <div className="faq-list" key={index}>
-                    {faqList.map((faq) => {
+                    {faqList.map((faq, faqIndex) => {
                         const faqInner = (
                             <>
                             <div className="faq-sub-container">
                                 <div className="faq-number">{faq.id}</div>
                                 <div className="faq-content">
                                     <h4 className="faq-question">{faq.question}</h4>
-                                    {(columns > 1 || !isMobileScreen) && <p className="faq-answer hidden">{faq.answer}</p>}
+                                    {(columns > 1 || !isMobileScreen) && <p className={`faq-answer ${faq.isExpanded ? '' : 'hidden'}`}>{faq.answer}</p>}
                                 </div>
                             </div>
-                            <button className="faq-toggle-button faq-open-button" aria-label="Open FAQ"
-                                onClick={() => handleOpenFAQ(faq.id)}>
+                            <button className={`faq-toggle-button faq-open-button ${faq.isExpanded ? 'hidden' : ''}`} aria-label="Open FAQ"
+                                onClick={() => handleOpenFAQ(index, faqIndex)}>
                                 <img src="/images/icons/plus.svg" alt="Open FAQ" />
                             </button>
-                            <button className="faq-toggle-button faq-close-button hidden" aria-label="Close FAQ"
-                                onClick={() => handleCloseFAQ(faq.id)}>
+                            <button className={`faq-toggle-button faq-close-button ${faq.isExpanded ? '' : 'hidden'}`} aria-label="Close FAQ"
+                                onClick={() => handleCloseFAQ(index, faqIndex)}>
                                 <img src="/images/icons/minus.svg" alt="Close FAQ" />
                             </button>
                             </>
@@ -142,11 +134,11 @@ export default function FAQs({ columns }) {
                             <div className="faq-main-container">
                                 {faqInner}
                             </div>
-                            {columns === 1 && <p className="faq-answer hidden">{faq.answer}</p>}
+                            {columns === 1 && <p className={`faq-answer ${faq.isExpanded ? '' : 'hidden'}`}>{faq.answer}</p>}
                             </>
                         );
 
-                        return (<div className="faq-container" key={faq.id} data-key={faq.id}>
+                        return (<div className={`faq-container ${faq.isExpanded ? 'expanded' : ''}`} key={faq.id} data-key={faq.id}>
                             {columns === 1 && isMobileScreen ? faqInnerSingleColumn : faqInner}
                         </div>)
                     })}
