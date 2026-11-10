@@ -1,16 +1,7 @@
-
-
-export const checkImageSource = async (source) => {
-    try {
-        const response = await fetch(source);
-        return response.ok;
-    } catch (error) {
-        console.error('Error fetching image:', error);
-        return false;
-    }
-}
+import api from "../api/api";
 
 export const replaceImageSource = async (source) => {
-    const isValid = await checkImageSource(source);
+    const isValid = await api.verifyImage(source);
+    console.log(`Image source: ${source}, isValid: ${isValid}, returning: ${isValid ? source : '/images/general-placeholder.jpg'}`);
     return isValid ? source : '/images/general-placeholder.jpg';
 }

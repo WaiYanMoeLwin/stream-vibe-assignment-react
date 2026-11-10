@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api/api';
+import { replaceImageSource } from '../../utils/utils';
 
 export default function SearchScreen({onClose}) {
     const keywordInputRef = useRef(null);
@@ -17,8 +18,12 @@ export default function SearchScreen({onClose}) {
         const keyword = keywordInputRef.current.value.trim();
         if (keyword) {
             api.searchContentByTitle(keyword).then((results) => {
-                setSearchResults(results.Search);
-                console.log("Search results:", results);
+                Promise.all(results.Search.map(async (result) => {
+                    result.Poster = await replaceImageSource(result.Poster);
+                    return result;
+                })).then((updatedResults) => {
+                    setSearchResults(updatedResults);
+                });
             });
         } else {
             setSearchResults([]);

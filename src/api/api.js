@@ -102,7 +102,7 @@ const api = {
         const url = `https://www.omdbapi.com/?apiKey=${apiKey}&t=${encodeURIComponent(name)}${season ? `&Season=${season}` : ''}${episode ? `&Episode=${episode}` : ''}`;
         const response = await fetch(url);
         if (!response.ok) {
-            console.error('Failed to fetch content details');
+            throw new Error('Failed to fetch content details');
         }
         const data = await response.json();
         saveToCache(cacheKey, data); // Save the data to cache
@@ -118,7 +118,7 @@ const api = {
         const url = `https://www.omdbapi.com/?apiKey=${apiKey}&i=${encodeURIComponent(id)}`;
         const response = await fetch(url);
         if (!response.ok) {
-            console.error('Failed to fetch content details by ID');
+            throw new Error('Failed to fetch content details by ID');
         }
         const data = await response.json();
         saveToCache(cacheKey, data); // Save the data to cache
@@ -128,9 +128,22 @@ const api = {
         const url = `https://www.omdbapi.com/?apiKey=${apiKey}&s=${encodeURIComponent(title)}`;
         const response = await fetch(url);
         if (!response.ok) {
-            console.error('Failed to search content by title');
+            throw new Error('Failed to search content by title');
         }
         return response.json();
+    },
+    verifyImage: async (url) => {
+        try {
+            const response = await fetch(url, { method: 'HEAD' });
+            // Check if the response is ok and the content type is an image
+            if (!response.ok || !response.headers.get('Content-Type').startsWith('image/')) {
+                return false;
+            }
+            return response.ok;
+        } catch (error) {
+            console.error('Error verifying image:', error);
+            return false;
+        }
     },
 
     // mock API call for local storage data
