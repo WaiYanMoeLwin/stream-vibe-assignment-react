@@ -4,7 +4,8 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import MainTemplate from '../components/common/MainTemplate';
 import MessageBox from '../components/common/MessageBox';
 import '../scss/checkout.scss';
-import { prepareSubscriptionDetails, subscribeToPlan } from '../utils/subscription-info';
+import useUserStore from '../stores/user-store';
+import { prepareSubscriptionDetails } from '../utils/subscription-info';
 
 export default function CheckoutPage() {
     const location = useLocation();
@@ -14,6 +15,7 @@ export default function CheckoutPage() {
     const showMessageBox = (message, onOkay) => {
         setMessageBox({ message, onClose: () => setMessageBox(null), onOkay });
     };
+    const { setActivePlan, processPayment } = useUserStore();
 
     const [searchParams] = useSearchParams();
     const [selectedPlanId, setSelectedPlanId] = useState(searchParams.get('plan'));
@@ -95,17 +97,22 @@ export default function CheckoutPage() {
         const selectedPlan = plans.find(plan => plan.id === selectedPlanId);
         const billingCycle = selectedBillingCycleId;
 
-        try {
-            const subscriptionDetails = prepareSubscriptionDetails(selectedPlan, billingCycle, paymentInfo, trial, showMessageBox);
-            await subscribeToPlan(subscriptionDetails, showMessageBox, navigate);
-        } catch (error) {
-            console.error('Error subscribing to plan:', error);
-        } finally {
-            // Clear sensitive payment information from memory
-            paymentInfo.cardNumber = '';
-            paymentInfo.expirationDate = '';
-            paymentInfo.cvv = '';
-        }
+        const subscriptionDetails = prepareSubscriptionDetails(selectedPlan, billingCycle, paymentInfo, trial, showMessageBox);
+        processPayment(paymentInfo).then(async (paymentResult) => {
+            if (paymentResult.success) {
+                await setActivePlan(subscriptionDetails);
+                showMessageBox(`You have successfully subscribed to the ${subscriptionDetails.name} plan.`, () => {
+                    navigate('/subscriptions');
+                });
+            }
+        }).catch((error) => {
+            showMessageBox(`Payment failed: ${error.message}`);
+        }).finally(() => {
+            // Clear sensitive payment information from state
+            setCardNumber('');
+            setExpirationDate('');
+            setCvv('');
+        });
     }
 
     return (

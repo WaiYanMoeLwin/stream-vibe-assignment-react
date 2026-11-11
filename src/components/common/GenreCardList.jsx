@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import api from '../../api/api';
+import useContentStore from '../../stores/content-store';
 
 export default function GenreCardList({contentType, genresData, className, page = 1, perPage = 5, ref, onScroll, shuffle=true}) {
     const [genreCardsData, setGenreCardsData] = useState([]);
     if (perPage === null) {
         perPage = genresData.length;
     }
+    const allContent = useContentStore((state) => state.content);
 
     useEffect(() => {
         const genresDataPaginated = genresData.slice((page - 1) * perPage, (page * perPage) > genresData.length ? genresData.length : (page * perPage));
@@ -20,8 +21,8 @@ export default function GenreCardList({contentType, genresData, className, page 
             }
             const contentsToShow = contents.slice(0, contents.length > 4 ? 4 : contents.length);
             const contentDetailsToShow = await Promise.all(contentsToShow.map(async (content) => {
-                const details = await api.fetchContentDetails(content);
-                return details;
+                const contentItem = allContent.find(item => item.id == content);
+                return contentItem ? contentItem.details : null;
             }));
             return {
                 ...genre,
@@ -31,7 +32,7 @@ export default function GenreCardList({contentType, genresData, className, page 
         Promise.all(data).then((results) => {
             setGenreCardsData(results);
         });
-    }, [contentType, genresData, page, perPage, shuffle]);
+    }, [contentType, genresData, page, perPage, shuffle, allContent]);
 
     return (
         <article className={className} ref={ref} onScroll={onScroll}>

@@ -48,7 +48,7 @@ export default function SearchScreen({onClose}) {
     }
 
     const handleSearchResultClick = (title) => {
-        navigate(`/content-details?id=${title.toLowerCase().replace(/\s+/g, '-')}`);
+        navigate(`/content-details?id=${encodeURIComponent(title.toLowerCase().replace(/\s+/g, '-'))}`);
         onClose();
     }
 

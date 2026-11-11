@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { useNavigate } from "react-router-dom";
-import api from "../../api/api";
-import { fetchActivePlan } from "../../utils/subscription-info";
-import { addToWatchList, getWatchList, isLoggedIn } from "../../utils/user";
-import { replaceImageSource } from "../../utils/utils";
+import { useLocation, useNavigate } from "react-router-dom";
+import useContentStore from "../../stores/content-store";
+import useSessionStore from "../../stores/session-store";
+import useUserStore from "../../stores/user-store";
 import MessageBox from "../common/MessageBox";
 
 export default function TrailerCarousel({ id, trailer, carousel=false, children }) {
-    const [currentTrailer, setCurrentTrailer] = useState(null);
+    // const [currentTrailer, setCurrentTrailer] = useState(null);
     const [messageBox, setMessageBox] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation();
     const [isInWatchList, setIsInWatchList] = useState(false);
+    const { getWatchList, addToWatchList, isLoggedIn, getActivePlan } = useUserStore();
+    const setRedirectAfterLogin = useSessionStore(state => state.setRedirectAfterLogin);
+    const currentTrailer = useContentStore((state) => {
+        const foundItem = state.content.find(item => item.id === trailer.id);
+        return foundItem ? foundItem.details : null;
+    });
 
     useEffect(() => {
         const fetchWatchListData = async () => {
@@ -27,7 +33,7 @@ export default function TrailerCarousel({ id, trailer, carousel=false, children 
         };
 
         fetchWatchListData();
-    }, [trailer]);
+    }, [trailer, getWatchList]);
 
     const showMessageBox = (message, onOkay) => {
         setMessageBox({ message, onClose: () => setMessageBox(null), onOkay });
@@ -42,35 +48,28 @@ export default function TrailerCarousel({ id, trailer, carousel=false, children 
         backgroundClip: 'padding-box',
     };
 
-    useEffect(() => {
-        if (trailer) {
-            api.fetchContentDetails(trailer.id).then(async (details) => {
-                details.Poster = await replaceImageSource(details.Poster);
-                setCurrentTrailer(details);
-            });
-        }
-    }, [trailer]);
-
     const handleAddToWatchList = () => {
         if (!isLoggedIn()) {
             showMessageBox('You need to be logged in to add items to your watch list.', () => {
-                window.localStorage.setItem('redirectAfterLogin', window.location.href);
+                setRedirectAfterLogin(location.pathname + (location.hash || '') + (location.search || ''));
                 navigate('/login');
             });
         } else {
-            addToWatchList(trailer.id, showMessageBox).then(() => {
+            addToWatchList(trailer.id).then(() => {
+                showMessageBox('Item added to your watch list.');
                 setIsInWatchList(true);
+            }).catch((error) => {
+                showMessageBox(error.message);
             });
         }
 
     }
 
-
     const handlePlayNow = async () => {
-        const activePlan = await fetchActivePlan();
+        const activePlan = await getActivePlan();
         if (!isLoggedIn()) {
             showMessageBox('You need to be logged in to play content.', () => {
-                window.localStorage.setItem('redirectAfterLogin', window.location.pathname + (window.location.hash || '') + (window.location.search || ''));
+                setRedirectAfterLogin(location.pathname + (location.hash || '') + (location.search || ''));
                 navigate('/login');
             });
         } else if (!activePlan) {

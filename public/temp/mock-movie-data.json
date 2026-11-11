@@ -1,6 +1,6 @@
 [
   {
-    "id": "avengers-endgame",
+    "id": "avengers:-endgame",
     "type": "movie",
     "title": "Avengers: Endgame",
     "music": [
@@ -13,7 +13,7 @@
     ]
   },
   {
-    "id": "thor-love-and-thunder",
+    "id": "thor:-love-and-thunder",
     "type": "movie",
     "title": "Thor: Love and Thunder",
     "music": [
@@ -43,7 +43,7 @@
   {
     "id": "glass-onion",
     "type": "movie",
-    "title": "Glass Onion: A Knives Out Mystery",
+    "title": "Glass Onion",
     "music": [
       { "name": "Nathan Johnson", "role": "Composer", "country": "United States", "photo": "public/images/posters/glass-onion.png" }
     ],
@@ -224,7 +224,7 @@
     ]
   },
   {
-    "id": "locke-key",
+    "id": "locke-&-key",
     "type": "show",
     "title": "Locke & Key",
     "music": [
@@ -237,7 +237,7 @@
     ]
   },
   {
-    "id": "money-heist-korea",
+    "id": "money-heist:-korea-–-joint-economic-area",
     "type": "show",
     "title": "Money Heist: Korea – Joint Economic Area",
     "music": [

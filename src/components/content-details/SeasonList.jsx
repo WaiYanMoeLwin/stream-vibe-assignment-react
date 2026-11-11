@@ -1,54 +1,62 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import api from "../../api/api";
-import { fetchActivePlan } from "../../utils/subscription-info";
-import { isLoggedIn } from "../../utils/user";
-import { replaceImageSource } from "../../utils/utils";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import useSessionStore from "../../stores/session-store";
+import useUserStore from "../../stores/user-store";
 import MessageBox from "../common/MessageBox";
 
-export default function SeasonList({ contentDetails }) {
+export default function SeasonList({ contentDetails, seasonInfo }) {
     const [seasons, setSeasons] = useState([]);
     const navigate = useNavigate();
+    const location = useLocation();
     const [searchParams] = useSearchParams();
     const id = searchParams.get("id");
     const [messageBox, setMessageBox] = useState(null);
     const showMessageBox = (message, onOkay) => {
         setMessageBox({ message, onClose: () => setMessageBox(null), onOkay });
     };
+    const { isLoggedIn, getActivePlan } = useUserStore();
+    const setRedirectAfterLogin = useSessionStore(state => state.setRedirectAfterLogin);
 
     useEffect(() => {
-        if (contentDetails && contentDetails.Type === 'series') {
-            const seasonNumbers = Array.from({ length: contentDetails.totalSeasons }, (_, i) => i + 1);
-            seasonNumbers.map(async (seasonNumber) => api.fetchContentDetails(contentDetails.imdbID, seasonNumber)
-                .then(seasonDetails => {
-                    seasonDetails.Episodes.map(async (episode) => {
-                        api.fetchContentDetailsById(episode.imdbID).then(async (episodeDetails) => {
-                            episodeDetails.Poster = await replaceImageSource(episodeDetails.Poster);
-                            setSeasons(prevSeasons => {
-                                const updatedSeasons = [...prevSeasons];
-                                const seasonIndex = updatedSeasons.findIndex(season => season.seasonNumber === seasonNumber);
-                                if (seasonIndex !== -1) {
-                                    const episodeExists = updatedSeasons[seasonIndex].episodes.some(ep => ep.imdbID === episodeDetails.imdbID);
-                                    if (episodeExists) {
-                                        return updatedSeasons;
-                                    }
-                                    updatedSeasons[seasonIndex].episodes.push(episodeDetails);
-                                    updatedSeasons[seasonIndex].episodes.sort((a, b) => a.Episode - b.Episode);
-                                } else {
-                                    updatedSeasons.push({
-                                    seasonNumber: seasonNumber,
-                                    episodes: [episodeDetails]
-                                });
-                            }
-                            updatedSeasons.sort((a, b) => a.seasonNumber - b.seasonNumber);
-                            return updatedSeasons;
-                        });
-                    });
-                });
-            }));
+        async function fetchSeasons() {
+            setSeasons(seasonInfo);
         }
-    }, [contentDetails]);
+        fetchSeasons();
+    }, [seasonInfo]);
+
+    // useEffect(() => {
+    //     if (contentDetails && contentDetails.Type === 'series') {
+    //         const seasonNumbers = Array.from({ length: contentDetails.totalSeasons }, (_, i) => i + 1);
+    //         seasonNumbers.map(async (seasonNumber) => api.fetchContentDetails(contentDetails.imdbID, seasonNumber)
+    //             .then(seasonDetails => {
+    //                 seasonDetails.Episodes.map(async (episode) => {
+    //                     api.fetchContentDetailsById(episode.imdbID).then(async (episodeDetails) => {
+    //                         episodeDetails.Poster = await replaceImageSource(episodeDetails.Poster);
+    //                         setSeasons(prevSeasons => {
+    //                             const updatedSeasons = [...prevSeasons];
+    //                             const seasonIndex = updatedSeasons.findIndex(season => season.seasonNumber === seasonNumber);
+    //                             if (seasonIndex !== -1) {
+    //                                 const episodeExists = updatedSeasons[seasonIndex].episodes.some(ep => ep.imdbID === episodeDetails.imdbID);
+    //                                 if (episodeExists) {
+    //                                     return updatedSeasons;
+    //                                 }
+    //                                 updatedSeasons[seasonIndex].episodes.push(episodeDetails);
+    //                                 updatedSeasons[seasonIndex].episodes.sort((a, b) => a.Episode - b.Episode);
+    //                             } else {
+    //                                 updatedSeasons.push({
+    //                                 seasonNumber: seasonNumber,
+    //                                 episodes: [episodeDetails]
+    //                             });
+    //                         }
+    //                         updatedSeasons.sort((a, b) => a.seasonNumber - b.seasonNumber);
+    //                         return updatedSeasons;
+    //                     });
+    //                 });
+    //             });
+    //         }));
+    //     }
+    // }, [contentDetails]);
     
     if (!contentDetails || contentDetails.Type !== 'series') {
         return null;
@@ -77,10 +85,10 @@ export default function SeasonList({ contentDetails }) {
     };
 
     const onPlayClick = async (seasonNumber, episodeNumber) => {
-        const activePlan = await fetchActivePlan();
+        const activePlan = await getActivePlan();
         if (!isLoggedIn()) {
             showMessageBox('You need to be logged in to play content.', () => {
-                window.localStorage.setItem('redirectAfterLogin', window.location.pathname + (window.location.hash || '') + (window.location.search || ''));
+                setRedirectAfterLogin(location.pathname + (location.hash || '') + (location.search || ''));
                 navigate('/login');
             });
         } else if (!activePlan) {
@@ -95,7 +103,7 @@ export default function SeasonList({ contentDetails }) {
     return (
         <ol className="seasons-list">
             {messageBox && createPortal(<MessageBox {...messageBox} />, document.body)}
-            {seasons.toSorted((a, b) => a.seasonNumber - b.seasonNumber).map((season) => (
+            {seasons && seasons.map((season) => (
                 <li key={season.seasonNumber} className="season-item">
                     <div className="season-header">
                         <div className="season-info">

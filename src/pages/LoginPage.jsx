@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import MainTemplate from "../components/common/MainTemplate";
 import MessageBox from "../components/common/MessageBox";
 import "../scss/login.scss";
-import { login, register } from "../utils/user";
+import useSessionStore from "../stores/session-store";
+import useUserStore from "../stores/user-store";
 
 export default function LoginPage() {
     const [currentTab, setCurrentTab] = useState("login");
@@ -12,6 +13,8 @@ export default function LoginPage() {
     const [registerData, setRegisterData] = useState({firstname: "", lastname: "", email: "", password: ""});
     const [messageBox, setMessageBox] = useState(null);
     const navigate = useNavigate();
+    const { login, register } = useUserStore();
+    const { clearRedirectAfterLogin, redirectAfterLogin } = useSessionStore();
 
     const loginEmailRef = useRef(null);
     const registerFirstNameRef = useRef(null);
@@ -53,7 +56,21 @@ export default function LoginPage() {
             return;
         }
 
-        await login(loginData.email, loginData.password, showMessageBox, navigate);
+        login(loginData.email, loginData.password).then((user) => {
+            if (user) {
+                showMessageBox(`Welcome back, ${user.firstName}!`, () => {
+                    if (redirectAfterLogin) {
+                        clearRedirectAfterLogin();
+                        navigate(redirectAfterLogin);
+                    } else {
+                        navigate('/');
+                    }
+                });
+            }
+        }).catch((error) => {
+            console.log("Login error:", error);
+            showMessageBox(error.message);
+        });
     }
 
     const handleRegister = async (event) => {
@@ -74,7 +91,18 @@ export default function LoginPage() {
             setRegisterData({firstname: "", lastname: "", email: "", password: ""});
         }
 
-        await register(registerData.firstname, registerData.lastname, registerData.email, registerData.password, onSuccess, showMessageBox);
+        register({
+            firstName: registerData.firstname,
+            lastName: registerData.lastname,
+            email: registerData.email,
+            password: registerData.password
+        }).then((success) => {
+            if (success) {
+                showMessageBox('Registration successful! You can now log in.', onSuccess);
+            }
+        }).catch((error) => {
+            showMessageBox(error.message);
+        });
     }
     return (
         <MainTemplate id="login" page="login" cta={false}>

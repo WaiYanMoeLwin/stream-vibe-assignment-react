@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react';
-import api from '../../api/api';
+import useContentStore from '../../stores/content-store';
 
 export default function BackgroundMashup({ numberOfMashupImages, children }) {
     const [mashupImages, setMashupImages] = useState([]);
+    const content = useContentStore((state) => state.content);
     
     useEffect(() => {
-        api.fetchMoviesAndShows().then((moviesAndShows) => {
-            const images = [];
-            const selectedIndices = new Set();
-
+        const moviesAndShows = content.map((item) => item.details);
+        const images = [];
+        const selectedIndices = new Set();
+        async function selectRandomImages() {
             for (let i = 0; i < numberOfMashupImages; i++) {
+                if (moviesAndShows.length === 0) {
+                    break;
+                }
                 const randomIndex = Math.floor(Math.random() * moviesAndShows.length);
                 if (!selectedIndices.has(randomIndex)) {
                     selectedIndices.add(randomIndex);
@@ -20,16 +24,14 @@ export default function BackgroundMashup({ numberOfMashupImages, children }) {
                     i--;
                     continue;
                 }
-                api.fetchContentDetails(moviesAndShows[randomIndex].id).then((details) => {
-                    images.push(details);
-                    if (images.length === numberOfMashupImages) {
-                        setMashupImages(images);
-                    }
-                });
+                images.push(moviesAndShows[randomIndex]);
+                if (images.length === numberOfMashupImages) {
+                    setMashupImages(images);
+                }
             }
-            
-        });
-    }, [numberOfMashupImages]);
+        };
+        selectRandomImages();
+    }, [numberOfMashupImages, content]);
 
     return (
         <div className="background-mashup">

@@ -5,7 +5,7 @@ import Pagination from "../common/Pagination";
 import SeasonList from "./SeasonList";
 import SidebarInfo from "./SidebarInfo";
 
-export default function MainInfo({ contentDetails, mockContentDetails }) {
+export default function MainInfo({ contentDetails, mockContentDetails, seasonInfo }) {
     const isMobileScreen = useMediaQuery({ maxWidth: 767 });
     const isTabletScreen = useMediaQuery({ maxWidth: 1023 });
     let castPerPage = 8;
@@ -26,13 +26,11 @@ export default function MainInfo({ contentDetails, mockContentDetails }) {
     const castToShow = casts.slice((currentCastPage - 1) * castPerPage, (currentCastPage * castPerPage) > casts.length ? casts.length : (currentCastPage * castPerPage));
     const reviewsToShow = reviews.slice((currentReviewsPage - 1) * reviewsPerPage, (currentReviewsPage * reviewsPerPage) > reviews.length ? reviews.length : (currentReviewsPage * reviewsPerPage));
 
-    console.log('contentDetails:', contentDetails);
-    console.log('mockContentDetails:', mockContentDetails);
     return (
         <article className="main-info">
             <section className={`episodes-section ${contentDetails.Type === 'movie' ? 'hidden' : ''}`}>
                 <h2 className="section-title">Seasons and Episodes</h2>
-                <SeasonList contentDetails={contentDetails} />
+                <SeasonList contentDetails={contentDetails} seasonInfo={seasonInfo} />
             </section>
             <section className="description-section">
                 <header className="section-header">

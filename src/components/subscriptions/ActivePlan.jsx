@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { cancelSubscription, fetchActivePlan } from '../../utils/subscription-info.js';
+import useUserStore from '../../stores/user-store.js';
 import MessageBox from '../common/MessageBox.jsx';
 
 export default function ActivePlan() {
@@ -9,18 +9,21 @@ export default function ActivePlan() {
     const showMessageBox = (message, callback) => {
         setMessageBox({ message, onClose: () => setMessageBox(null), onOkay: callback });
     };
+    const { cancelActivePlan, getActivePlan } = useUserStore();
 
     useEffect(() => {
         const fetchPlan = async () => {
-            const plan = await fetchActivePlan(showMessageBox);
+            const plan = await getActivePlan();
             setActivePlan(plan);
         };
-        fetchPlan();
-    }, []);
+        fetchPlan().catch((error) => {
+            showMessageBox(error.message);
+        });
+    }, [getActivePlan]);
 
     const handleCancelSubscription = () => {
         showMessageBox('Are you sure you want to cancel your subscription?', async () => {
-            await cancelSubscription(showMessageBox);
+            await cancelActivePlan();
             setActivePlan(null);
             showMessageBox('Your subscription has been canceled.');
         });

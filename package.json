@@ -14,7 +14,8 @@
     "react-dom": "^19.3.1",
     "react-responsive": "^10.0.1",
     "react-router-dom": "^7.18.5",
-    "sass": "^1.107.1"
+    "sass": "^1.107.1",
+    "zustand": "^5.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

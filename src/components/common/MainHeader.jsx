@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { useMediaQuery } from "react-responsive";
-import { Link, useNavigate } from "react-router-dom";
-import { getLoggedInUser, isLoggedIn, logout } from "../../utils/user";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useSessionStore from "../../stores/session-store";
+import useUserStore from "../../stores/user-store";
 import SearchScreen from "./SearchScreen";
 
 export default function MainHeader({currentPage}) {
     const [menuOpen, setMenuOpen] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
     const isSmallScreen = useMediaQuery({ maxWidth: 1023 });
     const [profileMenuOpen, setProfileMenuOpen] = useState(isSmallScreen ? true : false);
     const [searchOpen, setSearchOpen] = useState(false);
+    const { loggedInUser, isLoggedIn, logout } = useUserStore();
+    const setRedirectAfterLogin = useSessionStore(state => state.setRedirectAfterLogin);
 
     const isUserLoggedIn = isLoggedIn();
-    const loggedInUser = isUserLoggedIn ? getLoggedInUser() : null;
 
     const handleMenuClick = () => {
         setMenuOpen(!menuOpen);
@@ -23,7 +26,7 @@ export default function MainHeader({currentPage}) {
     }
 
     const handleLogoutClick = () => {
-        logout(navigate);
+        logout();
     }
 
     const profileMenu = (
@@ -34,7 +37,7 @@ export default function MainHeader({currentPage}) {
     )
 
     const handleLoginClick = () => {
-        localStorage.setItem('redirectAfterLogin', window.location.pathname + (window.location.hash || '') + (window.location.search || ''));
+        setRedirectAfterLogin(location.pathname + (location.hash || '') + (location.search || ''));
         navigate('/login');
     }
 

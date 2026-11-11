@@ -1,25 +1,30 @@
-import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import api from '../api/api';
 import '../scss/playback.scss';
-import { replaceImageSource } from '../utils/utils';
+import useContentStore from '../stores/content-store';
 
 export default function PlaybackPage() {
     const [searchParams] = useSearchParams();
     const id = searchParams.get('id');
-    const type = searchParams.get('type');
+    // const type = searchParams.get('type');
     const season = searchParams.get('season');
     const episode = searchParams.get('episode');
 
-    const [contentDetails, setContentDetails] = useState(null);
+    // const [contentDetails, setContentDetails] = useState(null);
     const navigate = useNavigate();
-    
-    useEffect(() => {
-        api.fetchContentDetails(id, season, episode).then(async (details) => {
-            details.Poster = await replaceImageSource(details.Poster);
-            setContentDetails(details);
-        });
-    }, [id, type, season, episode]);
+    const allContent = useContentStore((state) => state.content);
+    const loadContentDetails = useContentStore((state) => state.loadContentDetails);
+    const foundContent = allContent.find(item => item.id === id);
+
+    let contentDetails;
+    if (foundContent && foundContent.details.Type === 'movie') {
+        contentDetails = foundContent ? foundContent.details : null;
+    } else {
+        console.log('PlaybackPage - foundContent:', foundContent, 'season:', season, 'episode:', episode);
+        if (!foundContent.seasons) {
+            loadContentDetails(id);
+        }
+        contentDetails = foundContent ? foundContent.seasons?.find(s => s.seasonNumber == season)?.episodes?.find(e => e.Episode == episode) : null;
+    }
 
     const onBackButtonClick = () => {
         navigate(-1);

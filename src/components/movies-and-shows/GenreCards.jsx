@@ -29,7 +29,7 @@ export default function GenreCards({ contentType, genres, title, id, containerCl
     const cardListRef = useRef();
     useEffect(() => {
         const updateCardListDimensions = async () => {
-            if (cardListRef.current.children.length === filteredGenres.length) {
+            if (cardListRef.current &&cardListRef.current.children.length === filteredGenres.length) {
                 setCardListVisibleWidth(cardListRef.current.offsetWidth);
                 setCardListTotalWidth(cardListRef.current.scrollWidth);
             } else {
